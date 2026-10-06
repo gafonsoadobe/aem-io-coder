@@ -1,0 +1,464 @@
+/* columns-feature: oversized blue heading + copy + CTAs beside an illustration or video.
+ * Values extracted from https://agibank.com.br/ (home "Digital sempre" / "Físico quando você quiser"). */
+
+.columns-feature {
+  padding-block: 24px 64px;
+}
+
+.columns-feature .columns-feature-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-feature .columns-feature-row + .columns-feature-row {
+  margin-top: 48px;
+}
+
+/* ---------- text column ---------- */
+.columns-feature .columns-feature-text-col {
+  text-align: center;
+}
+
+.columns-feature .columns-feature-text-col h2 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 40px;
+  color: var(--agi-blue-100);
+}
+
+.columns-feature .columns-feature-text-col p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--agi-blue-100);
+}
+
+.columns-feature .columns-feature-text-col h2 + p {
+  margin-top: 24px;
+}
+
+/* app-download variant (with QR/badges): taller single-line heading, tighter copy */
+.columns-feature .columns-feature-text-col:has(.columns-feature-badges) h2 {
+  line-height: 63px;
+}
+
+.columns-feature .columns-feature-text-col:has(.columns-feature-badges) h2 + p {
+  margin-top: 16px;
+}
+
+/* ---------- CTAs ---------- */
+.columns-feature .columns-feature-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.columns-feature .columns-feature-ctas p.button-wrapper {
+  display: contents;
+}
+
+main .columns-feature a.button:any-link {
+  position: relative;
+  flex: 0 1 176px;
+  min-width: fit-content;
+  min-height: 36px;
+  max-height: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 0;
+  padding: 16px clamp(1.25rem, 1.174rem + 0.38vw, 1.5rem);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/* primary: blue trapezoid, darker blue on hover (global .primary colors) */
+main .columns-feature a.button.primary:any-link {
+  clip-path: polygon(7.45px 5.63px, 7.76px 4.75px, 8.17px 3.94px, 8.68px 3.19px, 9.28px 2.52px, 9.96px 1.93px, 10.71px 1.43px, 11.51px 1.04px, 12.37px 0.74px, 13.27px 0.56px, 14.2px 0.5px, calc(100% - 14.29px) 0.5px, calc(100% - 13.35px) 0.56px, calc(100% - 12.44px) 0.75px, calc(100% - 11.57px) 1.05px, calc(100% - 10.76px) 1.46px, calc(100% - 10.01px) 1.96px, calc(100% - 9.33px) 2.56px, calc(100% - 8.73px) 3.25px, calc(100% - 8.22px) 4.01px, calc(100% - 7.81px) 4.85px, calc(100% - 7.51px) 5.74px, calc(100% - 0.8px) calc(100% - 9.38px), calc(100% - 0.59px) calc(100% - 8.05px), calc(100% - 0.63px) calc(100% - 6.75px), calc(100% - 0.9px) calc(100% - 5.51px), calc(100% - 1.39px) calc(100% - 4.35px), calc(100% - 2.07px) calc(100% - 3.3px), calc(100% - 2.93px) calc(100% - 2.39px), calc(100% - 3.94px) calc(100% - 1.64px), calc(100% - 5.08px) calc(100% - 1.08px), calc(100% - 6.33px) calc(100% - 0.74px), calc(100% - 7.68px) calc(100% - 0.63px), 7.57px calc(100% - 2.87px), 6.23px calc(100% - 3.02px), 5px calc(100% - 3.4px), 3.88px calc(100% - 3.98px), 2.89px calc(100% - 4.75px), 2.06px calc(100% - 5.67px), 1.41px calc(100% - 6.73px), 0.95px calc(100% - 7.89px), 0.7px calc(100% - 9.13px), 0.68px calc(100% - 10.42px), 0.92px calc(100% - 11.74px));
+}
+
+/* secondary: white "torto" shape with a 2px blue outline, fills blue on hover (global .secondary colors) */
+main .columns-feature a.button.secondary:any-link {
+  padding: 2.7px;
+  clip-path: polygon(0.2px 8.63px, 0.01px 7.32px, 0.06px 6.05px, 0.35px 4.83px, 0.83px 3.69px, 1.51px 2.67px, 2.35px 1.77px, 3.34px 1.03px, 4.46px 0.48px, 5.68px 0.12px, 7px 0, calc(100% - 7.92px) 0, calc(100% - 6.62px) 0.12px, calc(100% - 5.4px) 0.46px, calc(100% - 4.3px) 1.01px, calc(100% - 3.31px) 1.73px, calc(100% - 2.47px) 2.6px, calc(100% - 1.79px) 3.61px, calc(100% - 1.3px) 4.72px, calc(100% - 1px) 5.92px, calc(100% - 0.92px) 7.18px, calc(100% - 1.08px) 8.48px, calc(100% - 6.67px) calc(100% - 5.61px), calc(100% - 6.94px) calc(100% - 4.66px), calc(100% - 7.34px) calc(100% - 3.78px), calc(100% - 7.85px) calc(100% - 2.97px), calc(100% - 8.45px) calc(100% - 2.24px), calc(100% - 9.15px) calc(100% - 1.61px), calc(100% - 9.93px) calc(100% - 1.07px), calc(100% - 10.78px) calc(100% - 0.64px), calc(100% - 11.68px) calc(100% - 0.33px), calc(100% - 12.63px) calc(100% - 0.14px), calc(100% - 13.62px) calc(100% - 0.09px), 12.56px calc(100% - 2.42px), 11.61px calc(100% - 2.49px), 10.7px calc(100% - 2.69px), 9.84px calc(100% - 3.01px), 9.03px calc(100% - 3.43px), 8.29px calc(100% - 3.95px), 7.62px calc(100% - 4.56px), 7.03px calc(100% - 5.26px), 6.53px calc(100% - 6.03px), 6.14px calc(100% - 6.88px), 5.86px calc(100% - 7.78px));
+}
+
+main .columns-feature a.button.secondary:any-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--agi-blue-100);
+  pointer-events: none;
+  clip-path: polygon(9px 0, calc(100% - 9.92px) 0, calc(100% - 8.25px) 0.15px, calc(100% - 6.68px) 0.6px, calc(100% - 5.26px) 1.29px, calc(100% - 4px) 2.22px, calc(100% - 2.92px) 3.35px, calc(100% - 2.04px) 4.64px, calc(100% - 1.4px) 6.07px, calc(100% - 1.02px) 7.61px, calc(100% - 0.92px) 9.23px, calc(100% - 1.12px) 10.9px, calc(100% - 6.71px) calc(100% - 7.19px), calc(100% - 7.06px) calc(100% - 5.97px), calc(100% - 7.57px) calc(100% - 4.83px), calc(100% - 8.23px) calc(100% - 3.79px), calc(100% - 9.01px) calc(100% - 2.86px), calc(100% - 9.91px) calc(100% - 2.04px), calc(100% - 10.91px) calc(100% - 1.35px), calc(100% - 11.99px) calc(100% - 0.8px), calc(100% - 13.16px) calc(100% - 0.4px), calc(100% - 14.38px) calc(100% - 0.16px), calc(100% - 15.65px) calc(100% - 0.09px), 14.53px calc(100% - 2.42px), 13.31px calc(100% - 2.52px), 12.14px calc(100% - 2.77px), 11.03px calc(100% - 3.18px), 9.99px calc(100% - 3.72px), 9.04px calc(100% - 4.39px), 8.18px calc(100% - 5.18px), 7.42px calc(100% - 6.07px), 6.78px calc(100% - 7.07px), 6.28px calc(100% - 8.15px), 5.91px calc(100% - 9.31px), 0.25px 11.1px, 0.01px 9.41px, 0.08px 7.77px, 0.44px 6.21px, 1.07px 4.75px, 1.94px 3.43px, 3.02px 2.28px, 4.29px 1.33px, 5.73px 0.61px, 7.31px 0.16px, 9px 0, 9px 2px, 7.69px 2.12px, 6.46px 2.48px, 5.34px 3.03px, 4.35px 3.77px, 3.51px 4.67px, 2.83px 5.69px, 2.35px 6.83px, 2.07px 8.05px, 2.01px 9.32px, 2.2px 10.63px, 7.86px calc(100% - 9.78px), 8.14px calc(100% - 8.88px), 8.53px calc(100% - 8.03px), 9.03px calc(100% - 7.26px), 9.62px calc(100% - 6.56px), 10.29px calc(100% - 5.95px), 11.03px calc(100% - 5.43px), 11.84px calc(100% - 5.01px), 12.7px calc(100% - 4.69px), 13.61px calc(100% - 4.49px), 14.56px calc(100% - 4.42px), calc(100% - 15.62px) calc(100% - 2.09px), calc(100% - 14.63px) calc(100% - 2.14px), calc(100% - 13.68px) calc(100% - 2.33px), calc(100% - 12.77px) calc(100% - 2.64px), calc(100% - 11.93px) calc(100% - 3.07px), calc(100% - 11.15px) calc(100% - 3.61px), calc(100% - 10.45px) calc(100% - 4.24px), calc(100% - 9.85px) calc(100% - 4.97px), calc(100% - 9.34px) calc(100% - 5.78px), calc(100% - 8.94px) calc(100% - 6.66px), calc(100% - 8.66px) calc(100% - 7.61px), calc(100% - 3.08px) 10.48px, calc(100% - 2.92px) 9.18px, calc(100% - 3px) 7.92px, calc(100% - 3.3px) 6.72px, calc(100% - 3.79px) 5.61px, calc(100% - 4.47px) 4.6px, calc(100% - 5.31px) 3.73px, calc(100% - 6.3px) 3.01px, calc(100% - 7.4px) 2.46px, calc(100% - 8.62px) 2.12px, calc(100% - 9.92px) 2px, 9px 2px);
+}
+
+/* clip-path would hide the focus ring; show the plain box while keyboard-focused */
+main .columns-feature a.button:focus-visible {
+  clip-path: none;
+  border-radius: var(--button-radius);
+}
+
+/* ---------- QR code + store badges ---------- */
+.columns-feature .columns-feature-badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* QR code: desktop only */
+.columns-feature .columns-feature-badges .columns-feature-qr {
+  display: none;
+  margin: 0;
+  line-height: 0;
+}
+
+/* store badges sit 16px below the top of the QR code */
+.columns-feature .columns-feature-badges .columns-feature-store {
+  margin: 16px 0 0;
+  line-height: 0;
+}
+
+.columns-feature .columns-feature-badges a {
+  display: block;
+  line-height: 0;
+}
+
+.columns-feature .columns-feature-badges img {
+  display: block;
+  width: 115px;
+  height: auto;
+}
+
+.columns-feature .columns-feature-qr img {
+  width: 66px;
+  height: 66px;
+}
+
+/* ---------- media column ---------- */
+
+/* full-bleed on mobile: cancel the 20px section padding */
+.columns-feature .columns-feature-media-col {
+  position: relative;
+  margin-inline: -20px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.columns-feature .columns-feature-media-col picture,
+.columns-feature .columns-feature-media-col img,
+.columns-feature .columns-feature-media-col video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* illustration is nudged 36px to the right (clipped by the column) */
+.columns-feature .columns-feature-media-col img {
+  transform: translateX(36px);
+}
+
+/* video: reserve its 16:10 frame while the lazy source is pending */
+.columns-feature .columns-feature-media-col:has(video) {
+  margin-top: 32px;
+}
+
+.columns-feature .columns-feature-media-col video {
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+}
+
+/* white strip masking the bottom edge of the animation */
+.columns-feature .columns-feature-media-col:has(video)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background-color: #fff;
+}
+
+@media (width >= 900px) {
+  /* source content sits 96px inside a 1400px container; the EDS section already adds 32px padding */
+  .columns-feature {
+    margin-inline: clamp(64px, calc((100vw - 1400px) / 2 + 64px), 96px);
+    padding-block: 24px 60px;
+  }
+
+  .columns-feature .columns-feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .columns-feature .columns-feature-text-col {
+    align-self: center;
+    max-width: 660px;
+    text-align: left;
+  }
+
+  /* app-download variant (with QR/badges) is a narrower column */
+  .columns-feature .columns-feature-text-col:has(.columns-feature-badges) {
+    max-width: 535px;
+  }
+
+  .columns-feature .columns-feature-text-col h2 {
+    font-size: 86px;
+    line-height: 86px;
+  }
+
+  .columns-feature .columns-feature-text-col:has(.columns-feature-badges) h2 {
+    font-size: 82px;
+    line-height: 86px;
+  }
+
+  .columns-feature .columns-feature-text-col p {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .columns-feature .columns-feature-text-col h2 + p,
+  .columns-feature .columns-feature-text-col:has(.columns-feature-badges) h2 + p,
+  .columns-feature .columns-feature-ctas,
+  .columns-feature .columns-feature-badges {
+    margin-top: 36px;
+  }
+
+  .columns-feature .columns-feature-ctas,
+  .columns-feature .columns-feature-badges {
+    justify-content: flex-start;
+  }
+
+  .columns-feature .columns-feature-badges .columns-feature-qr {
+    display: block;
+  }
+
+  .columns-feature .columns-feature-media-col {
+    margin-inline: 0;
+  }
+
+  .columns-feature .columns-feature-media-col:has(video) {
+    margin-top: 0;
+  }
+
+  /* illustration keeps its natural size */
+  .columns-feature .columns-feature-media-col picture,
+  .columns-feature .columns-feature-media-col img {
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+/* =====================================================================
+ * Product-page flavours (class added by JS from the authored content).
+ * Values extracted from https://agibank.com.br/conta-corrente,
+ * /seguros (intro_cta_with_image) and /agibank (download_app).
+ * ===================================================================== */
+
+/* variant overrides intentionally follow (and are more specific than) the base rules */
+/* stylelint-disable no-descending-specificity */
+
+/* ---------- intro: text + CTA beside a rounded image ---------- */
+.columns-feature.columns-feature-intro {
+  padding-block: 8px;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-row {
+  align-items: center;
+  gap: 24px;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-text-col {
+  width: 100%;
+  max-width: 512px;
+  text-align: left;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-text-col h2 {
+  /* source: 12px inside a 16px gutter; EDS gutter is 20px, so 8px keeps the same line length */
+  padding-inline: 8px;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-text-col p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-text-col h2 + p,
+.columns-feature.columns-feature-intro .columns-feature-ctas {
+  margin-top: 24px;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-text-col p a:not(.button):any-link {
+  color: var(--agi-blue-100);
+  text-decoration: underline;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-text-col p a:not(.button):hover {
+  color: var(--agi-blue-200);
+  text-decoration: none;
+}
+
+main .columns-feature.columns-feature-intro a.button.primary:any-link {
+  flex: none;
+  padding: 16px 40px;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-media-col {
+  width: 100%;
+  margin-inline: 0;
+}
+
+.columns-feature.columns-feature-intro .columns-feature-media-col img {
+  border-radius: 24px;
+  transform: none;
+}
+
+/* ---------- text-only: two text columns side by side ---------- */
+
+/* source section: 80px top margin (+16px gap) vs the 40px EDS section margin */
+.columns-feature.columns-feature-text-only {
+  padding-top: 56px;
+}
+
+.columns-feature.columns-feature-text-only .columns-feature-row {
+  gap: 96px;
+}
+
+.columns-feature.columns-feature-text-only .columns-feature-text-col:not(:has(.columns-feature-badges)) {
+  width: 100%;
+  max-width: 330px;
+  margin-inline: auto;
+}
+
+/* ---------- centered: single app-download call-out ---------- */
+
+/* source section: 64px top / 40px bottom margin (+40px gap) vs the 40px EDS section margin */
+.columns-feature.columns-feature-centered {
+  padding-block: 64px 40px;
+}
+
+.columns-feature.columns-feature-centered .columns-feature-text-col h2 {
+  line-height: 1.2;
+}
+
+.columns-feature.columns-feature-centered .columns-feature-text-col p {
+  line-height: 1.1;
+}
+
+.columns-feature.columns-feature-centered .columns-feature-text-col h2 + p {
+  margin-top: 24px;
+}
+
+.columns-feature.columns-feature-centered .columns-feature-badges .columns-feature-store {
+  margin-top: 24px;
+}
+
+@media (width >= 900px) {
+  /* intro */
+  .columns-feature.columns-feature-intro {
+    margin-inline: 0;
+    padding-block: 8px;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-text-col {
+    flex: 0 1 576px;
+    max-width: 576px;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-text-col h2 {
+    padding-inline: 0;
+    font-size: 48px;
+    line-height: 48px;
+    text-align: left;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-text-col p {
+    padding-right: 15%;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-text-col h2 + p,
+  .columns-feature.columns-feature-intro .columns-feature-ctas {
+    margin-top: 24px;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-media-col {
+    flex: 0 1 500px;
+  }
+
+  .columns-feature.columns-feature-intro .columns-feature-media-col picture,
+  .columns-feature.columns-feature-intro .columns-feature-media-col img {
+    width: 100%;
+  }
+
+  /* text-only: source section has a 134px top margin (+16px gap) */
+  .columns-feature.columns-feature-text-only {
+    padding-top: 110px;
+  }
+
+  .columns-feature.columns-feature-text-only .columns-feature-row {
+    gap: 0;
+  }
+
+  .columns-feature.columns-feature-text-only .columns-feature-text-col:not(:has(.columns-feature-badges)) {
+    align-self: start;
+    max-width: 660px;
+    margin-inline: 0;
+  }
+
+  .columns-feature.columns-feature-text-only .columns-feature-text-col h2,
+  .columns-feature.columns-feature-text-only .columns-feature-text-col:has(.columns-feature-badges) h2 {
+    font-size: 80px;
+    line-height: 86px;
+  }
+
+  /* centered: source section has 134px top / 60px bottom margins (+40px gap) */
+  .columns-feature.columns-feature-centered {
+    padding-block: 134px 60px;
+  }
+
+  .columns-feature.columns-feature-centered .columns-feature-row {
+    display: block;
+  }
+
+  .columns-feature.columns-feature-centered .columns-feature-text-col,
+  .columns-feature.columns-feature-centered .columns-feature-text-col:has(.columns-feature-badges) {
+    max-width: none;
+    text-align: center;
+  }
+
+  .columns-feature.columns-feature-centered .columns-feature-text-col h2,
+  .columns-feature.columns-feature-centered .columns-feature-text-col:has(.columns-feature-badges) h2 {
+    font-size: 80px;
+    line-height: 1.2;
+  }
+
+  .columns-feature.columns-feature-centered .columns-feature-text-col p {
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .columns-feature.columns-feature-centered .columns-feature-text-col h2 + p {
+    margin-top: 36px;
+  }
+
+  .columns-feature.columns-feature-centered .columns-feature-ctas,
+  .columns-feature.columns-feature-centered .columns-feature-badges {
+    justify-content: center;
+  }
+}

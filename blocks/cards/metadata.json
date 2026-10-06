@@ -1,0 +1,35 @@
+{
+  "variantName": "cards",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text",
+    "purpose": "cards-grid"
+  },
+  "contentPattern": {
+    "structure": "one row per card: optional image cell + body cell (heading, text, links); rendered as a responsive list of cards",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_fce5bc87a6a9",
+    "v_5c9017a4d300",
+    "v_4b8ec365c7ac",
+    "v_1d829e6d24be",
+    "v_2040e522cf7f",
+    "v_e444936414e2",
+    "v_f755c323a479",
+    "v_fcc48accae96"
+  ]
+}

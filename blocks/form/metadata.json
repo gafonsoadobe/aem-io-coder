@@ -1,0 +1,28 @@
+{
+  "variantName": "form",
+  "baseBlock": "form",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": "heading + text + 1 CTAs + image",
+    "purpose": "form-lead-capture"
+  },
+  "contentPattern": {
+    "structure": "JSON-driven form (aem-boilerplate-forms): row 1 a link to the form definition JSON (fields: e-mail, CPF, phone, amount, consent text, submit). Heading and side image are authored as surrounding section content or a columns layout.",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_1d9fc3274685-2"
+  ]
+}

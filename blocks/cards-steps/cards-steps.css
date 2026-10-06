@@ -1,0 +1,132 @@
+/* cards-steps: numbered, outlined white step boxes on a light grey band.
+ * Values from https://agibank.com.br/conta-corrente ("Abra sua conta em minutos"). */
+
+/* the section holding the steps is a light grey band */
+main > .section.cards-steps-container {
+  margin: 0;
+  padding: 42px 0;
+  background-color: var(--agi-grey-150);
+}
+
+/* default content around the steps (intro heading + closing note) is centred brand blue */
+main > .section.cards-steps-container > .default-content-wrapper {
+  color: var(--agi-blue-100);
+  text-align: center;
+}
+
+main > .section.cards-steps-container > .default-content-wrapper h2 {
+  margin: 0 0 16px;
+  color: var(--agi-blue-100);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+main > .section.cards-steps-container > .default-content-wrapper p {
+  margin: 12px 0 0;
+  color: var(--agi-blue-100);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cards-steps {
+  margin-top: 12px;
+}
+
+.cards-steps .cards-steps-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-steps .cards-steps-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 296px;
+  max-width: 100%;
+  margin: 20px 16px;
+  padding: 16px;
+  border: 1px solid var(--agi-blue-100);
+  border-radius: 20px;
+  background-color: #fff;
+  color: var(--agi-blue-100);
+}
+
+.cards-steps .cards-steps-number {
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 64px;
+  min-width: 64px;
+  height: 64px;
+  border: 2px solid var(--agi-blue-100);
+  border-radius: 50%;
+  background-color: #fff;
+  color: var(--agi-blue-100);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cards-steps .cards-steps-card-body {
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.cards-steps .cards-steps-card-body > * {
+  margin: 0;
+  color: var(--agi-blue-100);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.cards-steps .cards-steps-card-body > * + * {
+  margin-top: 8px;
+}
+
+.cards-steps .cards-steps-card-body a:any-link {
+  color: var(--agi-blue-100);
+  text-decoration: none;
+}
+
+.cards-steps .cards-steps-card-body a:hover,
+.cards-steps .cards-steps-card-body a:focus-visible {
+  color: var(--agi-blue-200);
+  text-decoration: underline;
+}
+
+@media (width >= 900px) {
+  main > .section.cards-steps-container > .default-content-wrapper h2 {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .cards-steps .cards-steps-list {
+    flex-flow: row wrap;
+    align-items: stretch;
+  }
+
+  .cards-steps .cards-steps-card {
+    flex-direction: row;
+    width: 362px;
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .cards-steps .cards-steps-card-body {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-left: 20px;
+    text-align: left;
+  }
+}

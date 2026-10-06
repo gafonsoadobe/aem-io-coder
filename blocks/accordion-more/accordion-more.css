@@ -1,0 +1,195 @@
+/* accordion-more: values extracted from agibank.com.br #more-products */
+.accordion-more {
+  /* flow-root keeps the toggle margins inside the block (source root is a flex box);
+     source root has margin-top 80px, EDS section already provides 40px */
+  display: flow-root;
+  max-width: 1293px;
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* "btn-shape-pro-max" trapezoid button shape and its 2px outline ring */
+  --accordion-more-shape: polygon(13.6645px 3.5721px, 14.0682px 2.936px, 14.5322px 2.3534px, 15.051px 1.8276px, 15.6194px 1.3616px, 16.2319px 0.9587px, 16.8831px 0.622px, 17.5677px 0.3546px, 18.2803px 0.1597px, 19.0154px 0.0404px, 19.7678px 0, calc(100% - 21.852px) 0, calc(100% - 21.0913px) 0.0413px, calc(100% - 20.3485px) 0.1632px, calc(100% - 19.6289px) 0.3622px, calc(100% - 18.9382px) 0.6352px, calc(100% - 18.2819px) 0.9788px, calc(100% - 17.6655px) 1.3898px, calc(100% - 17.0946px) 1.8649px, calc(100% - 16.5747px) 2.4007px, calc(100% - 16.1113px) 2.9941px, calc(100% - 15.71px) 3.6416px, calc(100% - 1.613px) calc(100% - 10.5781px), calc(100% - 1.0171px) calc(100% - 9.1398px), calc(100% - 0.7594px) calc(100% - 7.6811px), calc(100% - 0.8151px) calc(100% - 6.2432px), calc(100% - 1.1592px) calc(100% - 4.8673px), calc(100% - 1.7668px) calc(100% - 3.5946px), calc(100% - 2.6128px) calc(100% - 2.4663px), calc(100% - 3.6724px) calc(100% - 1.5236px), calc(100% - 4.9206px) calc(100% - 0.8076px), calc(100% - 6.3324px) calc(100% - 0.3597px), calc(100% - 7.883px) calc(100% - 0.2209px), 6.8814px calc(100% - 3.2854px), 5.3575px calc(100% - 3.4763px), 3.978px calc(100% - 3.9638px), 2.7659px calc(100% - 4.7078px), 1.7443px calc(100% - 5.6679px), 0.9361px calc(100% - 6.8038px), 0.3646px calc(100% - 8.0754px), 0.0528px calc(100% - 9.4423px), 0.0238px calc(100% - 10.8642px), 0.3006px calc(100% - 12.3009px), 0.9063px calc(100% - 13.7121px), 13.6645px 3.5721px);
+  --accordion-more-ring: polygon(calc(100% - 22.023px) 2px, 20.5969px 2px, 20.0595px 2.0289px, 19.5344px 2.1141px, 19.0254px 2.2533px, 18.5364px 2.4443px, 18.0712px 2.6848px, 17.6337px 2.9726px, 17.2277px 3.3054px, 16.8571px 3.681px, 16.5257px 4.0971px, 16.2374px 4.5515px, 3.4792px calc(100% - 12.7327px), 3.0466px calc(100% - 11.7247px), 2.8488px calc(100% - 10.6985px), 2.8696px calc(100% - 9.6828px), 3.0923px calc(100% - 8.7065px), 3.5005px calc(100% - 7.7983px), 4.0778px calc(100% - 6.9869px), 4.8075px calc(100% - 6.3011px), 5.6733px calc(100% - 5.7697px), 6.6587px calc(100% - 5.4214px), 7.7471px calc(100% - 5.2851px), calc(100% - 8.018px) calc(100% - 2.2206px), calc(100% - 6.9103px) calc(100% - 2.3197px), calc(100% - 5.9017px) calc(100% - 2.6397px), calc(100% - 5.01px) calc(100% - 3.1511px), calc(100% - 4.2532px) calc(100% - 3.8244px), calc(100% - 3.6489px) calc(100% - 4.6304px), calc(100% - 3.215px) calc(100% - 5.5394px), calc(100% - 2.9692px) calc(100% - 6.5222px), calc(100% - 2.9294px) calc(100% - 7.5493px), calc(100% - 3.1134px) calc(100% - 8.5912px), calc(100% - 3.539px) calc(100% - 9.6186px), calc(100% - 17.636px) 4.6012px, calc(100% - 17.9226px) 4.1386px, calc(100% - 18.2535px) 3.7148px, calc(100% - 18.6249px) 3.3321px, calc(100% - 19.0326px) 2.9927px, calc(100% - 19.4729px) 2.6992px, calc(100% - 19.9417px) 2.4537px, calc(100% - 20.435px) 2.2587px, calc(100% - 20.949px) 2.1166px, calc(100% - 21.4796px) 2.0295px, calc(100% - 22.023px) 2px, 20.5969px 0, calc(100% - 22.023px) 0, calc(100% - 21.2623px) 0.0413px, calc(100% - 20.5195px) 0.1632px, calc(100% - 19.7999px) 0.3622px, calc(100% - 19.1092px) 0.6352px, calc(100% - 18.4529px) 0.9788px, calc(100% - 17.8365px) 1.3898px, calc(100% - 17.2656px) 1.8649px, calc(100% - 16.7457px) 2.4007px, calc(100% - 16.2823px) 2.9941px, calc(100% - 15.881px) 3.6416px, calc(100% - 1.784px) calc(100% - 10.5781px), calc(100% - 1.1881px) calc(100% - 9.1398px), calc(100% - 0.9304px) calc(100% - 7.6811px), calc(100% - 0.9861px) calc(100% - 6.2432px), calc(100% - 1.3302px) calc(100% - 4.8673px), calc(100% - 1.9378px) calc(100% - 3.5946px), calc(100% - 2.7838px) calc(100% - 2.4663px), calc(100% - 3.8434px) calc(100% - 1.5236px), calc(100% - 5.0916px) calc(100% - 0.8076px), calc(100% - 6.5034px) calc(100% - 0.3597px), calc(100% - 8.054px) calc(100% - 0.2209px), 7.7105px calc(100% - 3.2854px), 6.1866px calc(100% - 3.4763px), 4.8071px calc(100% - 3.9638px), 3.595px calc(100% - 4.7078px), 2.5734px calc(100% - 5.6679px), 1.7653px calc(100% - 6.8038px), 1.1937px calc(100% - 8.0754px), 0.8819px calc(100% - 9.4423px), 0.8529px calc(100% - 10.8642px), 1.1297px calc(100% - 12.3009px), 1.7355px calc(100% - 13.7121px), 14.4936px 3.5721px, 14.8973px 2.936px, 15.3613px 2.3534px, 15.8801px 1.8276px, 16.4485px 1.3616px, 17.061px 0.9587px, 17.7122px 0.622px, 18.3968px 0.3546px, 19.1094px 0.1597px, 19.8445px 0.0404px, 20.5969px 0);
+}
+
+.accordion-more .accordion-more-item {
+  width: 100%;
+}
+
+/* toggle: outlined trapezoid button with chevron */
+.accordion-more .accordion-more-item-label {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 240px;
+  max-width: 100%;
+  height: 56px;
+  min-height: 36px;
+  margin: 40px auto 24px;
+  padding: 16px clamp(1.25rem, 1.174rem + 0.38vw, 1.5rem);
+  background-color: #fff;
+  color: var(--agi-blue-100);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  white-space: nowrap;
+  cursor: pointer;
+  list-style: none;
+  clip-path: var(--accordion-more-shape);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-more .accordion-more-item-label::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-more .accordion-more-item-label::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--agi-blue-100);
+  clip-path: var(--accordion-more-ring);
+  pointer-events: none;
+}
+
+.accordion-more .accordion-more-item-label::after {
+  content: '';
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M257.9 432c-22.5 0-30.9-5.7-43.8-18.8L10.1 206.1c-14.5-14.7-12.4-31.6 0-43l16.6-15.2c12.1-11 28.5-10.4 40.4 0L257.2 314.4l189.9-166c11.9-10.4 29-11.5 40.4 0l14.6 14.6c11.8 11.8 14.4 28 0 43L301.8 413.3c-13 13.2-21.6 18.8-43.9 18.8z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.accordion-more .accordion-more-item-label > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accordion-more .accordion-more-item-label:hover,
+.accordion-more .accordion-more-item-label:focus-visible {
+  background-color: var(--agi-blue-200);
+  color: #fff;
+}
+
+.accordion-more .accordion-more-item-label:focus-visible {
+  outline: 2px solid var(--agi-blue-200);
+  outline-offset: 2px;
+}
+
+.accordion-more .accordion-more-item[open] > .accordion-more-item-label:has(.accordion-more-label-open) {
+  width: 224px;
+}
+
+.accordion-more .accordion-more-item[open] > .accordion-more-item-label::after {
+  transform: rotate(180deg);
+}
+
+/* optional open/closed label pair */
+.accordion-more .accordion-more-label-open,
+.accordion-more .accordion-more-item[open] .accordion-more-label-closed {
+  display: none;
+}
+
+.accordion-more .accordion-more-item[open] .accordion-more-label-open {
+  display: inline;
+}
+
+/* expanded panel */
+.accordion-more .accordion-more-item[open] > .accordion-more-item-body {
+  overflow: hidden;
+  animation: accordion-more-expand 0.8s ease-out forwards;
+}
+
+.accordion-more .accordion-more-item-body > p {
+  margin: 0;
+  color: var(--agi-blue-100);
+  font-size: 18px;
+  line-height: 27px;
+}
+
+/* grid of product link buttons */
+.accordion-more .accordion-more-links {
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin: 40px 0 0;
+  padding: 0 16px;
+}
+
+.accordion-more .accordion-more-links > li {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.accordion-more .accordion-more-links a:any-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  min-height: 36px;
+  max-height: 58px;
+  padding: 16px clamp(1.25rem, 1.174rem + 0.38vw, 1.5rem);
+  border: 1px solid var(--agi-navy);
+  border-radius: var(--card-radius);
+  background-color: var(--agi-green-100);
+  color: var(--agi-blue-200);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-more .accordion-more-links a:hover,
+.accordion-more .accordion-more-links a:focus-visible {
+  border-color: var(--agi-blue-100);
+  background-color: var(--agi-blue-100);
+  color: #fff;
+}
+
+@keyframes accordion-more-expand {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  100% {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
+@media (width >= 900px) {
+  .accordion-more .accordion-more-item-label {
+    width: 384px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  .accordion-more .accordion-more-links {
+    grid-template-columns: repeat(3, 280px);
+    place-items: center;
+  }
+
+  .accordion-more .accordion-more-links > li {
+    width: auto;
+  }
+
+  .accordion-more .accordion-more-links a:any-link {
+    width: auto;
+  }
+}

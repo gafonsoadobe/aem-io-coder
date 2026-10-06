@@ -1,0 +1,14 @@
+{
+  "variantName": "columns-intro",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Photo panel + lime-green text panel, navy bold centered text",
+  "contentPattern": "Row 1: block name. Subsequent rows: N cells, one per column; all rows same column count. Typical: image | heading + paragraph.",
+  "usage": {
+    "pagesUsing": ["https://agibank.com.br/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-05"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-intro"]
+}

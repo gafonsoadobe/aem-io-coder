@@ -1,0 +1,14 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Narrow centered list of questions, small blue bold text, circular outlined chevron toggles, thin dividers",
+  "contentPattern": "Each row = one FAQ item: cell1 question (label), cell2 answer (body text).",
+  "usage": {
+    "pagesUsing": ["https://agibank.com.br/conta-corrente"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": ["accordion-faq"]
+}

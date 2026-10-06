@@ -1,0 +1,23 @@
+{
+  "variantName": "header",
+  "baseBlock": "header",
+  "canonicalModel": "configuration",
+  "visualCharacteristics": {
+    "colorScheme": "mixed",
+    "complexity": "moderate",
+    "density": "moderate",
+    "purpose": "header-global"
+  },
+  "contentPattern": {
+    "structure": "loaded from the nav fragment (nav.plain.html): brand logo, top-level navigation with mega-menu panels, tools/CTA links"
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "header-global"
+  ]
+}

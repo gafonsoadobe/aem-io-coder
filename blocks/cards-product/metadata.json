@@ -1,0 +1,19 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "3 solid blue rounded cards, white icon/title/text, outlined white CTA",
+  "contentPattern": "Row 1: block name. Each row = card: cell1 image/icon, cell2 heading + description + CTA.",
+  "usage": {
+    "pagesUsing": [
+      "https://agibank.com.br/",
+      "/conta-corrente"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-06T02:39:47.497Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-product"
+  ]
+}

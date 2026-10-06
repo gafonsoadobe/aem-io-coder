@@ -1,0 +1,1111 @@
+{
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://agibank.com.br/"
+      ],
+      "coverageGaps": [],
+      "description": "Landing page: promo carousel, split intro panel, product cards, feature columns and banner panels",
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            "main > section.hide-captcha > section:nth-of-type(1)"
+          ]
+        },
+        {
+          "name": "columns-intro",
+          "instances": [
+            "main > section.hide-captcha > section:nth-of-type(2)"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main > section.hide-captcha > section:nth-of-type(3)"
+          ]
+        },
+        {
+          "name": "accordion-more",
+          "instances": [
+            "#more-products"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main > section.hide-captcha > section:nth-of-type(5)",
+            "main > section.hide-captcha > section:nth-of-type(6)"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main > section.hide-captcha > section:nth-of-type(7)"
+          ]
+        },
+        {
+          "name": "columns-dark",
+          "instances": [
+            "main > section.hide-captcha > section:nth-of-type(8)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero-carousel",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(1)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "intro-split-panel",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-intro"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "product-highlights",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(3)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-product"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "more-products",
+          "selector": [
+            "#more-products"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion-more"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "5",
+          "name": "digital-sempre",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(5)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "fisico-quando-quiser",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(6)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "7",
+          "name": "about-banner",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(7)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "8",
+          "name": "careers-banner",
+          "selector": [
+            "main > section.hide-captcha > section:nth-of-type(8)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-dark"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "landing",
+      "urls": [
+        "https://agibank.com.br/cartoes",
+        "https://agibank.com.br/en",
+        "https://agibank.com.br/credito-do-trabalhador"
+      ],
+      "description": "Home-like landing pages (cards, en, credito-do-trabalhador) built from shared slice components",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/cartoes",
+      "sections": []
+    },
+    {
+      "name": "info-page",
+      "urls": [
+        "https://agibank.com.br/about",
+        "https://agibank.com.br/agibank",
+        "https://agibank.com.br/fale-conosco/app-e-acesso",
+        "https://agibank.com.br/fale-conosco/atendimento-e-canais",
+        "https://agibank.com.br/fale-conosco/boletos-e-pagamentos",
+        "https://agibank.com.br/fale-conosco/cartoes",
+        "https://agibank.com.br/fale-conosco/correspondentes-bancarios",
+        "https://agibank.com.br/fale-conosco/emprestimos",
+        "https://agibank.com.br/fale-conosco/seguranca"
+      ],
+      "coverageGaps": [],
+      "description": "Hero image with stacked text sections, stat tiles and card rows",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/about",
+      "sections": []
+    },
+    {
+      "name": "product-plans",
+      "urls": [
+        "https://agibank.com.br/agi-mais"
+      ],
+      "coverageGaps": [],
+      "description": "Hero with lead form, benefit list, plan comparison cards and partner logo strip",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/agi-mais",
+      "sections": []
+    },
+    {
+      "name": "app-download",
+      "urls": [
+        "https://agibank.com.br/appdoagi"
+      ],
+      "coverageGaps": [],
+      "description": "Short centered page with heading, copy and app store badges",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/appdoagi",
+      "sections": []
+    },
+    {
+      "name": "document-listing",
+      "urls": [
+        "https://agibank.com.br/asset",
+        "https://agibank.com.br/relatorios",
+        "https://agibank.com.br/relatorios-financeiros",
+        "https://agibank.com.br/scr"
+      ],
+      "coverageGaps": [],
+      "description": "Section headings over grids of downloadable document tiles, contact band",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/asset",
+      "sections": []
+    },
+    {
+      "name": "product-landing",
+      "urls": [
+        "https://agibank.com.br/beneficio-inss",
+        "https://agibank.com.br/emprestimo",
+        "https://agibank.com.br/emprestimo-consignado",
+        "https://agibank.com.br/emprestimo-pessoal",
+        "https://agibank.com.br/pix",
+        "https://agibank.com.br/portabilidade-emprestimo-consignado"
+      ],
+      "coverageGaps": [],
+      "description": "Illustrated hero, product card carousel, steps band, FAQ accordion and feature columns",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/beneficio-inss",
+      "sections": []
+    },
+    {
+      "name": "product-detail",
+      "urls": [
+        "https://agibank.com.br/conta-corrente",
+        "https://agibank.com.br/emprestimo-consignado-servidor-publico",
+        "https://agibank.com.br/emprestimo-fgts",
+        "https://agibank.com.br/open-finance",
+        "https://agibank.com.br/portabilidade-salario",
+        "https://agibank.com.br/seguros"
+      ],
+      "coverageGaps": [],
+      "description": "Product page built from slice sections: blue split hero, benefit card rows, feature columns, numbered steps, FAQ, CTA banner, app/store promo and other-products cards",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/conta-corrente",
+      "sections": []
+    },
+    {
+      "name": "tips-list",
+      "urls": [
+        "https://agibank.com.br/dicas-de-seguranca"
+      ],
+      "coverageGaps": [],
+      "description": "Illustrated hero followed by an accordion list of tips and CTA buttons",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/dicas-de-seguranca",
+      "sections": []
+    },
+    {
+      "name": "help-center",
+      "urls": [
+        "https://agibank.com.br/fale-conosco",
+        "https://agibank.com.br/ouvidoria"
+      ],
+      "coverageGaps": [],
+      "description": "Help hub heading with a grid of topic tiles",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/fale-conosco",
+      "sections": []
+    },
+    {
+      "name": "faq-category",
+      "urls": [
+        "https://agibank.com.br/fale-conosco/pix-e-transferencias"
+      ],
+      "coverageGaps": [],
+      "description": "Topic tabs over a single FAQ accordion list",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/fale-conosco/pix-e-transferencias",
+      "sections": []
+    },
+    {
+      "name": "press",
+      "urls": [
+        "https://agibank.com.br/imprensa"
+      ],
+      "coverageGaps": [],
+      "description": "Full-width image hero with title overlay and short contact band",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/imprensa",
+      "sections": []
+    },
+    {
+      "name": "campaign-landing",
+      "urls": [
+        "https://agibank.com.br/muda-pro-agi",
+        "https://agibank.com.br/relatorios-novo-desenrola-brasil-2026"
+      ],
+      "coverageGaps": [],
+      "description": "Campaign hero with lead form, benefit icons, stat tiles, product cards and dark CTA band",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/muda-pro-agi",
+      "sections": []
+    },
+    {
+      "name": "policy-index",
+      "urls": [
+        "https://agibank.com.br/politica-de-privacidade",
+        "https://agibank.com.br/politicas"
+      ],
+      "coverageGaps": [],
+      "description": "Text intro followed by groups of policy link buttons",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/politica-de-privacidade",
+      "sections": []
+    },
+    {
+      "name": "legal-article",
+      "urls": [
+        "https://agibank.com.br/politicas-de-privacidade"
+      ],
+      "coverageGaps": [],
+      "description": "Long single-column legal text with headings, lists and tables",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/politicas-de-privacidade",
+      "sections": []
+    },
+    {
+      "name": "awards-timeline",
+      "urls": [
+        "https://agibank.com.br/sobre/premiacoes"
+      ],
+      "coverageGaps": [],
+      "description": "Image hero followed by a vertical alternating timeline of award logos and captions",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/sobre/premiacoes",
+      "sections": []
+    },
+    {
+      "name": "terms",
+      "urls": [
+        "https://agibank.com.br/termos-de-uso"
+      ],
+      "coverageGaps": [],
+      "description": "Short single-column legal text with headings",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": [
+            "main section[data-slice-type=\"banner_hero\"]"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "main section[data-slice-type=\"vantagens\"]",
+            "main section[data-slice-type=\"cards_produtos\"]",
+            "main section[data-slice-type=\"feature_cards_carousel\"]"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            "main section[data-slice-type=\"intro_cta_with_image\"]",
+            "main section[data-slice-type=\"download_app\"]",
+            "main section[class=\"flex flex-col items-center\"]:not([data-slice-type])"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "main section[data-slice-type=\"benefit_cards\"]"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "main section[data-slice-type=\"faq\"]"
+          ]
+        },
+        {
+          "name": "columns-banner",
+          "instances": [
+            "main section[data-slice-type=\"media_left_cta\"]"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main section[data-slice-type=\"table\"]"
+          ]
+        }
+      ],
+      "representativeUrl": "https://agibank.com.br/termos-de-uso",
+      "sections": []
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}

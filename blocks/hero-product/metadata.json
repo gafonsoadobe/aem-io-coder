@@ -1,0 +1,14 @@
+{
+  "variantName": "hero-product",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Full-bleed solid blue band, white h1 + text + white skewed CTA left, illustration right",
+  "contentPattern": "1 row x 2 cells: text cell (h1, paragraph, CTA link) | image cell (illustration).",
+  "usage": {
+    "pagesUsing": ["https://agibank.com.br/conta-corrente"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": ["hero-product"]
+}

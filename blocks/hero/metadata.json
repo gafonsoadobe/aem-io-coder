@@ -1,0 +1,46 @@
+{
+  "variantName": "hero",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "medium",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": "heading + text + image",
+    "purpose": "hero-banner"
+  },
+  "contentPattern": {
+    "structure": "one row, one cell: background picture + heading (h1), optional text and CTA links",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_6712b230a567",
+    "v_1d9fc3274685-1",
+    "v_9a07ff2d4f58",
+    "v_9a07ff2d4f58-2",
+    "v_9a07ff2d4f58-3",
+    "v_e1a6cc780137-1",
+    "v_ea65d25d923f",
+    "v_ea65d25d923f-1",
+    "v_14acc9894277",
+    "v_1d9fc3274685",
+    "v_1d9fc3274685-6",
+    "v_30c7c9a031e9-3",
+    "v_692b255d5f80",
+    "v_8891b0a9c7a5-1",
+    "v_9a07ff2d4f58-1",
+    "v_9a07ff2d4f58-4",
+    "v_a1abbc0951d8",
+    "v_e1a6cc780137",
+    "v_f587a61ab03f"
+  ]
+}

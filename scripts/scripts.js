@@ -180,7 +180,48 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+/**
+ * Preview only: the dev server serves pages under .../content/, while authored links
+ * are root-relative (correct for the published site, where no page lives under
+ * /content/). Point those links at the preview path so they navigate natively.
+ */
+function enableLocalContentLinks() {
+  const { pathname, search, hash } = window.location;
+  const idx = pathname.indexOf('/content/');
+  if (idx === -1) return;
+  // the dev server only serves /content/<page> (no .html); forward .html URLs
+  if (window.errorCode === '404' && pathname.endsWith('.html')) {
+    window.location.replace(`${pathname.slice(0, -'.html'.length)}${search}${hash}`);
+    return;
+  }
+  const base = pathname.slice(0, idx + '/content'.length);
+  const rewrite = (a) => {
+    const href = a.getAttribute('href');
+    if (!href || !href.startsWith('/') || href.startsWith('//') || href.startsWith(`${base}/`)) return;
+    const url = new URL(href, window.location.origin);
+    if (/^\/(blocks|scripts|styles|fonts|icons|media_)/.test(url.pathname)
+      || /\.[a-z0-9]+$/i.test(url.pathname)) return;
+    const path = url.pathname === '/' ? '/index' : url.pathname.replace(/\/$/, '');
+    a.setAttribute('href', `${base}${path}${url.search}${url.hash}`);
+  };
+  const scan = (root) => {
+    if (root.matches?.('a[href]')) rewrite(root);
+    root.querySelectorAll?.('a[href]').forEach(rewrite);
+  };
+  scan(document);
+  // header, footer and blocks render their links later
+  new MutationObserver((mutations) => {
+    mutations.forEach((m) => {
+      if (m.type === 'attributes') rewrite(m.target);
+      else m.addedNodes.forEach((n) => { if (n.nodeType === 1) scan(n); });
+    });
+  }).observe(document.documentElement, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['href'],
+  });
+}
+
 async function loadPage() {
+  enableLocalContentLinks();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();

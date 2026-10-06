@@ -1,0 +1,14 @@
+{
+  "variantName": "columns-dark",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Dark navy shaped panel, photo left, white heading, green stat, CTA",
+  "contentPattern": "Row 1: block name. Subsequent rows: N cells, one per column; all rows same column count. Typical: image | h2, stat paragraph (strong), paragraph, paragraph + CTA.",
+  "usage": {
+    "pagesUsing": ["https://agibank.com.br/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-05"
+  },
+  "options": [],
+  "memberVariantIds": ["columns-dark"]
+}

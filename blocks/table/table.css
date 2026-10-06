@@ -1,0 +1,59 @@
+/* values extracted from source computed styles (identical at mobile and desktop) */
+.table {
+  max-width: 100%;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.table .table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table .table-scroll:focus-visible {
+  outline: 2px solid var(--agi-blue-100);
+  outline-offset: 2px;
+}
+
+.table table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.table th,
+.table td {
+  padding: 24px 16px;
+  border: 2px solid var(--text-color);
+  background-color: transparent;
+  color: var(--text-color);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  font-weight: 700;
+}
+
+.table th strong,
+.table th b {
+  font-weight: 900;
+}
+
+.table th a:any-link,
+.table td a:any-link {
+  color: inherit;
+}
+
+.table th > *,
+.table td > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}

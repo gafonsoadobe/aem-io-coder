@@ -1,0 +1,89 @@
+/* tabs: horizontal tab strip + panels; a panel with media renders content | media columns */
+.tabs {
+  font-family: var(--body-font-family);
+}
+
+.tabs .tabs-list {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs .tabs-list[hidden] {
+  display: none;
+}
+
+.tabs .tabs-list button {
+  flex: 0 0 max-content;
+  margin: 0;
+  padding: 10px 20px;
+  border: 1px solid var(--agi-blue-100);
+  border-radius: var(--button-radius);
+  background-color: transparent;
+  color: var(--agi-blue-100);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tabs .tabs-list button:hover {
+  background-color: var(--agi-blue-50);
+}
+
+.tabs .tabs-list button[aria-selected='true'] {
+  background-color: var(--agi-blue-100);
+  color: #fff;
+  cursor: default;
+}
+
+.tabs .tabs-list button:focus-visible {
+  outline: 2px solid var(--agi-blue-200);
+  outline-offset: 2px;
+}
+
+.tabs .tabs-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs .tabs-panel {
+  display: grid;
+  gap: 32px;
+  color: var(--agi-blue-100);
+}
+
+.tabs .tabs-panel-content > :first-child {
+  margin-top: 0;
+}
+
+.tabs .tabs-panel-content h2,
+.tabs .tabs-panel-content h3 {
+  color: var(--agi-blue-100);
+}
+
+.tabs .tabs-panel-media picture,
+.tabs .tabs-panel-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--card-radius);
+}
+
+@media (width >= 900px) {
+  .tabs .tabs-panel-split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .tabs .tabs-panel-media {
+    justify-self: center;
+    max-width: 400px;
+  }
+}

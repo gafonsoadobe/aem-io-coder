@@ -1,0 +1,19 @@
+{
+  "variantName": "columns-feature",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "White bg, oversized blue heading, text + CTAs left, illustration/media right",
+  "contentPattern": "Row 1: block name. Subsequent rows: N cells, one per column; all rows same column count. Typical: text cell (h2, paragraphs, CTA links, optional QR image + store badge links) | illustration image or video link (webm/mp4).",
+  "usage": {
+    "pagesUsing": [
+      "https://agibank.com.br/",
+      "/conta-corrente"
+    ],
+    "reuseCount": 3,
+    "lastUsed": "2026-10-06T02:39:47.497Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-feature"
+  ]
+}

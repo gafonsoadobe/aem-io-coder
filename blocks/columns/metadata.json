@@ -1,0 +1,29 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text",
+    "purpose": "columns-layout"
+  },
+  "contentPattern": {
+    "structure": "one row of N cells (columns), each cell rich text or a single picture; additional rows stack",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_2c7ff4818248",
+    "v_f6a9f918913e"
+  ]
+}

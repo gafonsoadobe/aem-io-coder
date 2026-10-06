@@ -1,0 +1,121 @@
+/* video: rounded 16:9 poster with centered outlined play button + label; embed on click */
+.video {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--panel-radius);
+  overflow: hidden;
+}
+
+.video[data-embed-loaded='false']:not(.placeholder) {
+  /* reserve space to avoid layout shift before the embed loads */
+  aspect-ratio: 16 / 9;
+}
+
+.video .video-placeholder {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.video .video-placeholder picture,
+.video .video-placeholder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video .video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.video .video-play-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border: 2px solid currentcolor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+}
+
+.video .video-play-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 3px);
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 20px solid currentcolor;
+  transform: translate(-50%, -50%);
+}
+
+.video .video-play:hover .video-play-icon {
+  background-color: rgb(255 255 255 / 20%);
+}
+
+.video .video-play:focus-visible {
+  outline: 3px solid var(--agi-yellow);
+  outline-offset: -6px;
+}
+
+.video .video-play-label {
+  text-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+}
+
+.video .video-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.video .video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video.autoplay {
+  border-radius: 0;
+}
+
+@media (width >= 900px) {
+  .video .video-play-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .video .video-play-icon::before {
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 30px;
+  }
+
+  .video .video-play {
+    font-size: 28px;
+  }
+}

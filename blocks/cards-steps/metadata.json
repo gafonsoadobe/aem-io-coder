@@ -1,0 +1,14 @@
+{
+  "variantName": "cards-steps",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Outlined white rounded boxes on grey band, circled step number + blue instruction text, 3 per row",
+  "contentPattern": "Each row = one step: 1 cell with the instruction text (links allowed). Step number is generated from row order; an optional leading cell holding only a number overrides it.",
+  "usage": {
+    "pagesUsing": ["https://agibank.com.br/conta-corrente"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": ["cards-steps"]
+}

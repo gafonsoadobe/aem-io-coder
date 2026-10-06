@@ -1,0 +1,99 @@
+/* accordion: FAQ list — question row with circular chevron toggle, answer revealed below */
+.accordion {
+  max-width: 740px;
+  margin: 0 auto;
+  font-family: var(--body-font-family);
+}
+
+.accordion .accordion-item {
+  border-bottom: 1px solid var(--agi-grey-100);
+}
+
+.accordion .accordion-item-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 60px;
+  padding: 10px 0;
+  cursor: pointer;
+  list-style: none;
+  color: var(--agi-blue-200);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.accordion .accordion-item-label::-webkit-details-marker {
+  display: none;
+}
+
+.accordion .accordion-item-label:focus-visible {
+  outline: 2px solid var(--agi-blue-100);
+  outline-offset: 2px;
+}
+
+.accordion .accordion-item-title {
+  flex: 1 1 auto;
+}
+
+.accordion .accordion-item-icon {
+  position: relative;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--agi-blue-100);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.accordion .accordion-item-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border: solid var(--agi-blue-100);
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -70%) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.accordion .accordion-item[open] .accordion-item-icon::after {
+  transform: translate(-50%, -30%) rotate(-135deg);
+}
+
+.accordion .accordion-item-body {
+  padding: 0 56px 16px 0;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.accordion .accordion-item-body > :first-child {
+  margin-top: 0;
+}
+
+.accordion .accordion-item-body > :last-child {
+  margin-bottom: 0;
+}
+
+.accordion .accordion-item-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.accordion .accordion-item-body th,
+.accordion .accordion-item-body td {
+  padding: 12px;
+  border: 1px solid var(--agi-grey-100);
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media (width >= 900px) {
+  .accordion .accordion-item-label {
+    font-size: 18px;
+  }
+}

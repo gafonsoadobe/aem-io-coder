@@ -1,0 +1,26 @@
+{
+  "variantName": "table",
+  "baseBlock": "table",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "header row + body rows of text cells",
+    "purpose": "data-table"
+  },
+  "contentPattern": {
+    "structure": "each block row is a table row; first row is the header (th scope=col), remaining rows are body rows; cells contain text, links and strong",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

@@ -1,0 +1,35 @@
+/* Agibank brand tokens, extracted from https://agibank.com.br/ */
+:root {
+  /* brand palette */
+  --agi-blue-50: #ecf1ff;
+  --agi-blue-100: #0064f5;
+  --agi-blue-200: #0033b0;
+  --agi-navy: #000f44;
+  --agi-green-100: #77df40;
+  --agi-green-200: #c9ff90;
+  --agi-yellow: #ffd600;
+  --agi-grey-100: #e1e1e1;
+  --agi-grey-150: #f3f3f3;
+  --agi-red: #ef0000;
+
+  /* semantic colors */
+  --background-color: #fff;
+  --light-color: var(--agi-grey-150);
+  --dark-color: var(--agi-navy);
+  --text-color: #0a0a0a;
+  --heading-color: var(--agi-navy);
+  --link-color: var(--agi-blue-100);
+  --link-hover-color: var(--agi-blue-200);
+
+  /* fonts */
+  --body-font-family: 'AgibankSansVariable', agibank-sans-fallback, sans-serif;
+  --heading-font-family: 'AgibankSansVariable', agibank-sans-fallback, sans-serif;
+
+  /* shape */
+  --button-radius: 7px;
+  --card-radius: 10px;
+  --panel-radius: 24px;
+
+  /* slanted, round-cornered CTA shape used across agibank.com.br */
+  --agi-cta-shape: polygon(7.45px 5.63px, 7.76px 4.75px, 8.17px 3.94px, 8.68px 3.19px, 9.28px 2.52px, 9.96px 1.93px, 10.71px 1.43px, 11.51px 1.04px, 12.37px 0.74px, 13.27px 0.56px, 14.2px 0.5px, calc(100% - 14.29px) 0.5px, calc(100% - 13.35px) 0.56px, calc(100% - 12.44px) 0.75px, calc(100% - 11.57px) 1.05px, calc(100% - 10.76px) 1.46px, calc(100% - 10.01px) 1.96px, calc(100% - 9.33px) 2.56px, calc(100% - 8.73px) 3.25px, calc(100% - 8.22px) 4.01px, calc(100% - 7.81px) 4.85px, calc(100% - 7.51px) 5.74px, calc(100% - 0.8px) calc(100% - 9.38px), calc(100% - 0.59px) calc(100% - 8.05px), calc(100% - 0.63px) calc(100% - 6.75px), calc(100% - 0.9px) calc(100% - 5.51px), calc(100% - 1.39px) calc(100% - 4.35px), calc(100% - 2.07px) calc(100% - 3.3px), calc(100% - 2.93px) calc(100% - 2.39px), calc(100% - 3.94px) calc(100% - 1.64px), calc(100% - 5.08px) calc(100% - 1.08px), calc(100% - 6.33px) calc(100% - 0.74px), calc(100% - 7.68px) calc(100% - 0.63px), 7.57px calc(100% - 2.87px), 6.23px calc(100% - 3.02px), 5px calc(100% - 3.4px), 3.88px calc(100% - 3.98px), 2.89px calc(100% - 4.75px), 2.06px calc(100% - 5.67px), 1.41px calc(100% - 6.73px), 0.95px calc(100% - 7.89px), 0.7px calc(100% - 9.13px), 0.68px calc(100% - 10.42px), 0.92px calc(100% - 11.74px));
+}

@@ -1,0 +1,19 @@
+{
+  "variantName": "columns-banner",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Angled blue panel with white heading + CTA overlapping photo",
+  "contentPattern": "Row 1: block name. Subsequent rows: N cells, one per column; all rows same column count. Typical: heading + CTA | image (desktop picture, optional second mobile picture).",
+  "usage": {
+    "pagesUsing": [
+      "https://agibank.com.br/",
+      "/conta-corrente"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-06T02:39:47.497Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-banner"
+  ]
+}

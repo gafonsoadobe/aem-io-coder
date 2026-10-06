@@ -1,0 +1,40 @@
+{
+  "variantName": "accordion",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 6 CTAs",
+    "purpose": "accordion-faq"
+  },
+  "contentPattern": {
+    "structure": "one row per FAQ item: cell 1 question (toggle label), cell 2 answer (rich text, lists, links or a table)",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_30c7c9a031e9-1",
+    "v_30c7c9a031e9-2",
+    "v_30c7c9a031e9",
+    "v_30c7c9a031e9-4",
+    "v_30c7c9a031e9-5",
+    "v_30c7c9a031e9-6",
+    "v_30c7c9a031e9-7",
+    "v_30c7c9a031e9-8",
+    "v_4f2d91f5d090",
+    "v_7d99648ef687",
+    "v_8fe00f25cd24",
+    "v_8fe00f25cd24-1",
+    "v_ca3ad7e6d9b3"
+  ]
+}

@@ -1,0 +1,466 @@
+/* columns-banner: angled blue panel (heading + CTA) overlapping a photo.
+ * Values extracted from https://agibank.com.br/ ("Um banco agilizado como você"). */
+
+/* the source container spans 1400px with no side padding of its own */
+main > .section > .columns-banner-wrapper {
+  padding: 0;
+}
+
+.columns-banner {
+  position: relative;
+  padding: 0 16px;
+  color: rgb(10 10 10);
+}
+
+.columns-banner .columns-banner-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.columns-banner .columns-banner-row {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.columns-banner .columns-banner-row + .columns-banner-row {
+  margin-top: 24px;
+}
+
+/* ---- panel ---- */
+.columns-banner .columns-banner-text-col {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  padding: 32px 0;
+  text-align: center;
+
+  /* rounds the panel corners, including the clipped angled edge */
+  filter: url("#columns-banner-goo");
+}
+
+.columns-banner .columns-banner-text-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--agi-blue-100);
+}
+
+.columns-banner .columns-banner-text-col h2 {
+  margin: 0 0 20px;
+  padding: 0 16px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+.columns-banner .columns-banner-text-col p {
+  margin: 0;
+  padding: 0 16px;
+  color: #fff;
+}
+
+/* ---- call-to-action: white trapezoid ---- */
+.columns-banner .columns-banner-text-col p.columns-banner-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+main .columns-banner .columns-banner-cta a:any-link {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 192px;
+  max-width: 100%;
+  min-height: 36px;
+  max-height: 40px;
+  margin: 0;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #fff;
+  color: var(--agi-blue-100);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  clip-path: polygon(
+    1.56px 9.02px,
+    1.38px 7.8px,
+    1.44px 6.61px,
+    1.7px 5.48px,
+    2.15px 4.43px,
+    2.77px 3.48px,
+    3.56px 2.64px,
+    4.47px 1.96px,
+    5.51px 1.44px,
+    6.65px 1.11px,
+    7.88px 1px,
+    calc(100% - 7.04px) 1px,
+    calc(100% - 5.84px) 1.11px,
+    calc(100% - 4.71px) 1.43px,
+    calc(100% - 3.68px) 1.93px,
+    calc(100% - 2.77px) 2.6px,
+    calc(100% - 1.99px) 3.42px,
+    calc(100% - 1.36px) 4.35px,
+    calc(100% - 0.89px) 5.38px,
+    calc(100% - 0.62px) 6.5px,
+    calc(100% - 0.54px) 7.67px,
+    calc(100% - 0.69px) 8.87px,
+    calc(100% - 6.28px) calc(100% - 6.22px),
+    calc(100% - 6.53px) calc(100% - 5.34px),
+    calc(100% - 6.9px) calc(100% - 4.52px),
+    calc(100% - 7.37px) calc(100% - 3.76px),
+    calc(100% - 7.94px) calc(100% - 3.09px),
+    calc(100% - 8.59px) calc(100% - 2.5px),
+    calc(100% - 9.31px) calc(100% - 2px),
+    calc(100% - 10.1px) calc(100% - 1.6px),
+    calc(100% - 10.93px) calc(100% - 1.31px),
+    calc(100% - 11.82px) calc(100% - 1.14px),
+    calc(100% - 12.73px) calc(100% - 1.09px),
+    13.44px calc(100% - 3.42px),
+    12.56px calc(100% - 3.49px),
+    11.72px calc(100% - 3.67px),
+    10.92px calc(100% - 3.97px),
+    10.17px calc(100% - 4.36px),
+    9.48px calc(100% - 4.84px),
+    8.85px calc(100% - 5.41px),
+    8.31px calc(100% - 6.06px),
+    7.85px calc(100% - 6.78px),
+    7.48px calc(100% - 7.56px),
+    7.22px calc(100% - 8.4px),
+    1.56px 9.02px
+  );
+}
+
+main .columns-banner .columns-banner-cta a:any-link:hover,
+main .columns-banner .columns-banner-cta a:any-link:focus-visible {
+  background-color: var(--agi-green-100);
+  color: var(--agi-blue-200);
+  text-decoration: none;
+}
+
+/* ---- photo ---- */
+.columns-banner .columns-banner-img-col {
+  line-height: 0;
+}
+
+.columns-banner .columns-banner-img-col picture {
+  display: block;
+}
+
+.columns-banner .columns-banner-img-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (width >= 900px) {
+  .columns-banner {
+    padding: 0;
+  }
+
+  .columns-banner .columns-banner-row {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .columns-banner .columns-banner-text-col {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 750px;
+    min-height: 329px;
+    margin: 0 0 0 16px;
+    padding: 0 150px 0 0;
+    text-align: start;
+  }
+
+  .columns-banner .columns-banner-text-col::before {
+    clip-path: polygon(0 0, 0 100%, calc(100% - 150px) 100%, 100% 0);
+  }
+
+  .columns-banner .columns-banner-text-col h2 {
+    margin: 50px 102px 0;
+    padding: 0;
+    font-size: 38px;
+    line-height: 57px;
+  }
+
+  .columns-banner .columns-banner-text-col p {
+    padding: 0 0 0 32px;
+  }
+
+  .columns-banner .columns-banner-text-col p.columns-banner-cta {
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 0 0 32px;
+  }
+
+  main .columns-banner .columns-banner-cta a:any-link {
+    margin: 0 20px 30px 0;
+  }
+
+  .columns-banner .columns-banner-img-col {
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0 16px 0 -112px;
+    padding: 34px 0 4px;
+  }
+
+  .columns-banner .columns-banner-img-col img {
+    width: 100%;
+    height: 291px;
+    object-fit: cover;
+  }
+}
+
+@media (width >= 1200px) {
+  .columns-banner .columns-banner-text-col {
+    width: 900px;
+  }
+
+  .columns-banner .columns-banner-text-col h2 {
+    max-width: 500px;
+    font-size: 48px;
+    line-height: 72px;
+  }
+}
+
+/* ---- image-first variant (product pages): photo left, angled panel right ----
+ * Values extracted from https://agibank.com.br/conta-corrente
+ * (section[data-slice-type="media_left_cta"]). */
+.columns-banner.columns-banner-media-left {
+  padding: 0 20px;
+}
+
+.columns-banner .columns-banner-img-first {
+  clip-path: polygon(
+    0 20px,
+    0.26px 16.76px,
+    1.02px 13.68px,
+    2.23px 10.81px,
+    3.86px 8.19px,
+    5.86px 5.86px,
+    8.19px 3.86px,
+    10.81px 2.23px,
+    13.68px 1.02px,
+    16.76px 0.26px,
+    20px 0,
+    calc(100% - 20px) 0,
+    calc(100% - 16.76px) 0.26px,
+    calc(100% - 13.68px) 1.02px,
+    calc(100% - 10.81px) 2.23px,
+    calc(100% - 8.19px) 3.86px,
+    calc(100% - 5.86px) 5.86px,
+    calc(100% - 3.86px) 8.19px,
+    calc(100% - 2.23px) 10.81px,
+    calc(100% - 1.02px) 13.68px,
+    calc(100% - 0.26px) 16.76px,
+    100% 20px,
+    100% calc(100% - 20.18px),
+    calc(100% - 0.28px) calc(100% - 16.81px),
+    calc(100% - 1.1px) calc(100% - 13.62px),
+    calc(100% - 2.4px) calc(100% - 10.67px),
+    calc(100% - 4.14px) calc(100% - 7.99px),
+    calc(100% - 6.27px) calc(100% - 5.64px),
+    calc(100% - 8.74px) calc(100% - 3.64px),
+    calc(100% - 11.51px) calc(100% - 2.06px),
+    calc(100% - 14.54px) calc(100% - 0.93px),
+    calc(100% - 17.76px) calc(100% - 0.3px),
+    calc(100% - 21.14px) calc(100% - 0.21px),
+    18.86px calc(100% - 17.92px),
+    15.76px calc(100% - 18.34px),
+    12.83px calc(100% - 19.21px),
+    10.12px calc(100% - 20.5px),
+    7.65px calc(100% - 22.16px),
+    5.46px calc(100% - 24.16px),
+    3.59px calc(100% - 26.45px),
+    2.07px calc(100% - 29.02px),
+    0.95px calc(100% - 31.8px),
+    0.24px calc(100% - 34.77px),
+    0 calc(100% - 37.89px),
+    0 20px
+  );
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-text-col {
+  margin: 0;
+  padding: 34px 22px 0;
+  background-color: var(--agi-blue-200);
+  filter: none;
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-text-col::before {
+  content: none;
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-text-col h2 {
+  margin: 0;
+  padding: 0;
+  color: var(--agi-green-100);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-text-col p {
+  margin: 24px 0 28px;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-text-col p.columns-banner-cta {
+  margin: 0;
+  padding: 0;
+}
+
+main .columns-banner .columns-banner-img-first .columns-banner-cta a:any-link {
+  width: auto;
+  margin: 0 0 40px;
+  padding: 10px 28px;
+  color: var(--agi-blue-200);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-img-col {
+  position: relative;
+  z-index: 1;
+  min-height: 350px;
+  margin-top: -20px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-img-col picture,
+.columns-banner .columns-banner-img-first .columns-banner-img-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.columns-banner .columns-banner-img-first .columns-banner-img-col img {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (width >= 900px) {
+  .columns-banner.columns-banner-media-left {
+    padding: 0;
+  }
+
+  .columns-banner .columns-banner-img-first {
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 1063px;
+    min-height: 350px;
+    margin: 0 auto;
+    clip-path: polygon(
+      55.15px 24.81px,
+      56.29px 20.51px,
+      58.01px 16.52px,
+      60.25px 12.87px,
+      62.96px 9.6px,
+      66.1px 6.76px,
+      69.6px 4.38px,
+      73.41px 2.52px,
+      77.49px 1.2px,
+      81.78px 0.48px,
+      86.22px 0.39px,
+      calc(100% - 143.94px) 44.08px,
+      calc(100% - 140.74px) 44.42px,
+      calc(100% - 137.64px) 45.09px,
+      calc(100% - 134.64px) 46.08px,
+      calc(100% - 131.78px) 47.37px,
+      calc(100% - 129.08px) 48.94px,
+      calc(100% - 126.56px) 50.79px,
+      calc(100% - 124.23px) 52.9px,
+      calc(100% - 122.14px) 55.25px,
+      calc(100% - 120.28px) 57.83px,
+      calc(100% - 118.69px) 60.62px,
+      calc(100% - 3.82px) calc(100% - 59.65px),
+      calc(100% - 1.56px) calc(100% - 53.64px),
+      calc(100% - 0.65px) calc(100% - 47.58px),
+      calc(100% - 0.98px) calc(100% - 41.62px),
+      calc(100% - 2.47px) calc(100% - 35.93px),
+      calc(100% - 5.01px) calc(100% - 30.66px),
+      calc(100% - 8.51px) calc(100% - 25.98px),
+      calc(100% - 12.87px) calc(100% - 22.03px),
+      calc(100% - 18px) calc(100% - 18.99px),
+      calc(100% - 23.8px) calc(100% - 17px),
+      calc(100% - 30.17px) calc(100% - 16.23px),
+      30.75px calc(100% - 0.23px),
+      25.21px calc(100% - 0.65px),
+      20.01px calc(100% - 2.02px),
+      15.25px calc(100% - 4.24px),
+      10.99px calc(100% - 7.23px),
+      7.34px calc(100% - 10.88px),
+      4.35px calc(100% - 15.11px),
+      2.13px calc(100% - 19.8px),
+      0.73px calc(100% - 24.87px),
+      0.26px calc(100% - 30.23px),
+      0.79px calc(100% - 35.76px),
+      55.15px 24.81px
+    );
+  }
+
+  .columns-banner .columns-banner-img-first .columns-banner-img-col {
+    flex: 0 0 367px;
+    min-height: 350px;
+    margin: 0 -40px 0 0;
+    padding: 0;
+    clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
+  }
+
+  .columns-banner .columns-banner-img-first .columns-banner-img-col img {
+    height: 100%;
+  }
+
+  .columns-banner .columns-banner-img-first .columns-banner-text-col {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 80px 0 0 60px;
+    text-align: left;
+  }
+
+  .columns-banner .columns-banner-img-first .columns-banner-text-col > * {
+    max-width: 390px;
+  }
+
+  .columns-banner .columns-banner-img-first .columns-banner-text-col h2 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .columns-banner .columns-banner-img-first .columns-banner-text-col p.columns-banner-cta {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  main .columns-banner .columns-banner-img-first .columns-banner-cta a:any-link {
+    margin: 0 0 16px;
+  }
+}

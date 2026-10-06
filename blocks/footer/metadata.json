@@ -1,0 +1,23 @@
+{
+  "variantName": "footer",
+  "baseBlock": "footer",
+  "canonicalModel": "configuration",
+  "visualCharacteristics": {
+    "colorScheme": "mixed",
+    "complexity": "simple",
+    "density": "moderate",
+    "purpose": "footer-global"
+  },
+  "contentPattern": {
+    "structure": "loaded from the footer fragment (footer.plain.html): link groups (collapsible on mobile), social/app links, legal text"
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "footer-global"
+  ]
+}

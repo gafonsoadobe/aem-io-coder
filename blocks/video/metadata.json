@@ -1,0 +1,29 @@
+{
+  "variantName": "video",
+  "baseBlock": "video",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading",
+    "purpose": "video-poster-play"
+  },
+  "contentPattern": {
+    "structure": "one row: a link to the video (YouTube, Vimeo or MP4), an optional poster picture and optional label text shown beside the centered play button; section heading authored above as default content",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_b4571967553b",
+    "v_6e03081c197a"
+  ]
+}

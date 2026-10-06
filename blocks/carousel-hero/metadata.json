@@ -1,0 +1,14 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Full-width rounded photo slides, text overlay left, arrows + dots",
+  "contentPattern": "Row 1: block name. Each subsequent row = slide: cell1 image (desktop picture, optional second mobile picture), cell2 eyebrow/heading/text/CTA.",
+  "usage": {
+    "pagesUsing": ["https://agibank.com.br/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-05"
+  },
+  "options": [],
+  "memberVariantIds": ["carousel-hero"]
+}

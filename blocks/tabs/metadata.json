@@ -1,0 +1,29 @@
+{
+  "variantName": "tabs",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": "heading + text + 1 CTAs + image",
+    "purpose": "tabs-offer-panels"
+  },
+  "contentPattern": {
+    "structure": "one row per tab: cell 1 tab label, cell 2 panel content (text, heading, form/simulator, CTA), optional cell 3 panel image rendered as a right-hand column",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_1d9fc3274685-3",
+    "v_daff1465b6a1"
+  ]
+}

@@ -1,0 +1,324 @@
+/* full-bleed hero carousel: escape the section content max-width */
+main > .section > .carousel-hero-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.carousel-hero {
+  position: relative;
+}
+
+.carousel-hero .carousel-hero-slides-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-hero .carousel-hero-slides,
+.carousel-hero .carousel-hero-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-hero .carousel-hero-slides {
+  display: flex;
+  overflow: scroll clip;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel-hero .carousel-hero-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-hero .carousel-hero-slide {
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 868px;
+  scroll-snap-align: center;
+}
+
+/* image sets the slide height; overlay sits on top */
+.carousel-hero .carousel-hero-slide-image {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.carousel-hero .carousel-hero-slide-image a,
+.carousel-hero .carousel-hero-slide-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-hero .carousel-hero-slide-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* text overlay: top + centered on mobile */
+.carousel-hero .carousel-hero-slide-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 40px 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel-hero .carousel-hero-slide-content > * {
+  align-self: stretch;
+  margin: 0;
+}
+
+.carousel-hero .carousel-hero-slide-content a {
+  pointer-events: auto;
+}
+
+.carousel-hero .carousel-hero-slide-content > .carousel-hero-eyebrow {
+  color: var(--agi-yellow);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.5px;
+}
+
+.carousel-hero .carousel-hero-slide-content h2,
+.carousel-hero .carousel-hero-slide-content .carousel-hero-title {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+.carousel-hero .carousel-hero-slide-content .carousel-hero-title strong {
+  font-weight: 700;
+}
+
+.carousel-hero .carousel-hero-slide-content > p {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+/* 16px between eyebrow, title group, and text group; lines inside a group stack tight */
+.carousel-hero .carousel-hero-slide-content > * + h2,
+.carousel-hero .carousel-hero-slide-content > * + .carousel-hero-title,
+.carousel-hero .carousel-hero-slide-content > * + p {
+  margin-top: 16px;
+}
+
+.carousel-hero .carousel-hero-slide-content > h2 + h2,
+.carousel-hero .carousel-hero-slide-content > .carousel-hero-title + .carousel-hero-title,
+.carousel-hero .carousel-hero-slide-content > p:not(.carousel-hero-eyebrow, .carousel-hero-title, .carousel-hero-cta)
+  + p:not(.carousel-hero-title, .carousel-hero-cta) {
+  margin-top: 0;
+}
+
+/* CTA: Agibank green */
+.carousel-hero .carousel-hero-slide-content > .carousel-hero-cta {
+  align-self: auto;
+  margin-top: 40px;
+}
+
+main .carousel-hero a.carousel-hero-cta-link:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  max-height: 40px;
+  padding: 16px clamp(1.25rem, 1.174rem + 0.38vw, 1.5rem);
+  border-radius: var(--button-radius);
+  background-color: var(--agi-green-100);
+  color: var(--agi-navy);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+main .carousel-hero a.carousel-hero-cta-link:hover,
+main .carousel-hero a.carousel-hero-cta-link:focus-visible {
+  background-color: var(--agi-green-200);
+  color: var(--agi-navy);
+  text-decoration: none;
+}
+
+/* controls: translucent pill with prev arrow, dots, next arrow */
+.carousel-hero .carousel-hero-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 32px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 19%);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  backdrop-filter: blur(5px);
+  transform: translateX(-50%);
+}
+
+.carousel-hero .carousel-hero-indicators {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 0;
+}
+
+.carousel-hero .carousel-hero-indicator button {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #fff;
+  opacity: 0.25;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-hero .carousel-hero-indicator button[aria-current='true'] {
+  width: 20px;
+  opacity: 1;
+  cursor: default;
+}
+
+.carousel-hero .carousel-hero-prev,
+.carousel-hero .carousel-hero-next {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.carousel-hero .carousel-hero-prev::after,
+.carousel-hero .carousel-hero-next::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border: 3px solid currentcolor;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 1px;
+  transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+.carousel-hero .carousel-hero-next::after {
+  transform: translate(-70%, -50%) rotate(45deg);
+}
+
+.carousel-hero .carousel-hero-prev:focus-visible,
+.carousel-hero .carousel-hero-next:focus-visible,
+.carousel-hero .carousel-hero-indicator button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* tablet: centered peek slides with rounded artwork */
+@media (width >= 600px) {
+  .carousel-hero .carousel-hero-slides {
+    padding-inline: 15%;
+  }
+
+  /* track padding leaves 70% of the width for the active slide */
+  .carousel-hero .carousel-hero-slide {
+    padding: 0 24px;
+  }
+
+  .carousel-hero .carousel-hero-slide-image {
+    border-radius: 52px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content {
+    padding-inline: 64px;
+  }
+}
+
+/* desktop: full-width slides, text vertically centered on the left */
+@media (width >= 900px) {
+  .carousel-hero .carousel-hero-slides {
+    padding-inline: 0;
+  }
+
+  .carousel-hero .carousel-hero-slide {
+    padding: 0;
+  }
+
+  .carousel-hero .carousel-hero-slide-image {
+    border-radius: 0;
+  }
+
+  .carousel-hero .carousel-hero-slide-content {
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 96px;
+    text-align: left;
+  }
+
+  .carousel-hero .carousel-hero-slide-content > .carousel-hero-eyebrow {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content h2,
+  .carousel-hero .carousel-hero-slide-content .carousel-hero-title {
+    font-size: 50px;
+    line-height: 62.5px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content > p {
+    font-size: 22px;
+    line-height: 27.5px;
+  }
+}
+
+/* wide desktop: 90% centered slide, neighbours peek in, 52px rounded artwork */
+@media (width >= 1200px) {
+  .carousel-hero .carousel-hero-slides {
+    padding-inline: 5%;
+  }
+
+  /* track padding leaves 90% of the width for the active slide */
+  .carousel-hero .carousel-hero-slide {
+    padding: 16px;
+  }
+
+  .carousel-hero .carousel-hero-slide-image {
+    border-radius: 52px;
+  }
+
+  .carousel-hero .carousel-hero-controls {
+    margin-bottom: 48px;
+  }
+}

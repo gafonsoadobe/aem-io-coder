@@ -1,0 +1,194 @@
+/* hero-product: full-bleed blue band, white h1 + copy + white CTA left, illustration right.
+ * Values from https://agibank.com.br/conta-corrente (product hero). */
+
+/* the band spans the full viewport: drop the section wrapper's max-width and padding */
+main > .section > .hero-product-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.hero-product {
+  overflow: hidden;
+  background-color: var(--agi-blue-100);
+  color: #fff;
+}
+
+.hero-product .hero-product-inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* ---------- text ---------- */
+.hero-product .hero-product-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-product .hero-product-content :is(h1, h2) {
+  margin: 0;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-product .hero-product-content p {
+  margin: 16px 0 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+/* ---------- CTA: white trapezoid, green on hover ---------- */
+.hero-product .hero-product-content p.hero-product-cta {
+  margin: 32px 0 16px;
+  line-height: 0;
+}
+
+.hero-product .hero-product-content p.hero-product-cta + p.hero-product-cta {
+  margin-top: 0;
+}
+
+main .hero-product .hero-product-cta a:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 36px;
+  height: 40px;
+  padding: 16px clamp(1.25rem, 1.174rem + 0.38vw, 1.5rem);
+  background-color: #fff;
+  color: var(--agi-blue-100);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  clip-path: polygon(
+    1.56px 9.02px,
+    1.38px 7.8px,
+    1.44px 6.61px,
+    1.7px 5.48px,
+    2.15px 4.43px,
+    2.77px 3.48px,
+    3.56px 2.64px,
+    4.47px 1.96px,
+    5.51px 1.44px,
+    6.65px 1.11px,
+    7.88px 1px,
+    calc(100% - 7.04px) 1px,
+    calc(100% - 5.84px) 1.11px,
+    calc(100% - 4.71px) 1.43px,
+    calc(100% - 3.68px) 1.93px,
+    calc(100% - 2.77px) 2.6px,
+    calc(100% - 1.99px) 3.42px,
+    calc(100% - 1.36px) 4.35px,
+    calc(100% - 0.89px) 5.38px,
+    calc(100% - 0.62px) 6.5px,
+    calc(100% - 0.54px) 7.67px,
+    calc(100% - 0.69px) 8.87px,
+    calc(100% - 6.28px) calc(100% - 6.22px),
+    calc(100% - 6.53px) calc(100% - 5.34px),
+    calc(100% - 6.9px) calc(100% - 4.52px),
+    calc(100% - 7.37px) calc(100% - 3.76px),
+    calc(100% - 7.94px) calc(100% - 3.09px),
+    calc(100% - 8.59px) calc(100% - 2.5px),
+    calc(100% - 9.31px) calc(100% - 2px),
+    calc(100% - 10.1px) calc(100% - 1.6px),
+    calc(100% - 10.93px) calc(100% - 1.31px),
+    calc(100% - 11.82px) calc(100% - 1.14px),
+    calc(100% - 12.73px) calc(100% - 1.09px),
+    13.44px calc(100% - 3.42px),
+    12.56px calc(100% - 3.49px),
+    11.72px calc(100% - 3.67px),
+    10.92px calc(100% - 3.97px),
+    10.17px calc(100% - 4.36px),
+    9.48px calc(100% - 4.84px),
+    8.85px calc(100% - 5.41px),
+    8.31px calc(100% - 6.06px),
+    7.85px calc(100% - 6.78px),
+    7.48px calc(100% - 7.56px),
+    7.22px calc(100% - 8.4px),
+    1.56px 9.02px
+  );
+}
+
+/* any additional CTA: transparent with white text */
+main .hero-product .hero-product-cta a.hero-product-cta-secondary:any-link {
+  background-color: transparent;
+  color: #fff;
+  text-decoration: underline;
+  clip-path: none;
+}
+
+main .hero-product .hero-product-cta a:any-link:hover,
+main .hero-product .hero-product-cta a:any-link:focus-visible {
+  background-color: var(--agi-green-100);
+  color: var(--agi-blue-200);
+  text-decoration: none;
+}
+
+/* clip-path would hide the focus ring; show the plain box while keyboard-focused */
+main .hero-product .hero-product-cta a:any-link:focus-visible {
+  clip-path: none;
+  border-radius: var(--button-radius);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ---------- illustration ---------- */
+.hero-product .hero-product-media {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 32px;
+  line-height: 0;
+}
+
+.hero-product .hero-product-media picture,
+.hero-product .hero-product-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (width >= 600px) {
+  .hero-product .hero-product-content :is(h1, h2) {
+    font-size: 44px;
+  }
+
+  .hero-product .hero-product-content p {
+    font-size: 20px;
+  }
+}
+
+@media (width >= 900px) {
+  /* source: plain flex row, no gap; columns stretch to the row height */
+  .hero-product .hero-product-inner {
+    display: flex;
+    padding: 32px 40px;
+  }
+
+  .hero-product .hero-product-content {
+    flex: 0 1 640px;
+    justify-content: center;
+    padding-block: 48px;
+  }
+
+  .hero-product .hero-product-media {
+    flex: 0 1 660px;
+    margin-top: 0;
+  }
+
+  .hero-product.hero-product-no-media .hero-product-content {
+    flex-basis: 100%;
+  }
+}
