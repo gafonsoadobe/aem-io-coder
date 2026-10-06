@@ -1,0 +1,83 @@
+{
+  "definitions": [
+    {
+      "title": "Carousel Hero",
+      "id": "carousel-hero",
+      "model": "carousel-hero",
+      "filter": "carousel-hero",
+      "plugins": {
+        "da": {
+          "name": "carousel-hero",
+          "rows": 1,
+          "columns": 2
+        }
+      }
+    },
+    {
+      "title": "Hero Slide",
+      "id": "carousel-hero-slide",
+      "model": "carousel-hero-slide",
+      "plugins": {
+        "da": {
+          "name": "carousel-hero-slide",
+          "unsafeHTML": "<div><div><p><picture><img loading=\"lazy\"></picture></p><p><picture><img loading=\"lazy\"></picture></p></div><div><p></p></div></div>",
+          "fields": [
+            { "name": "image", "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[src]" },
+            { "name": "imageAlt", "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[alt]" },
+            { "name": "mobileImage", "selector": "div:nth-child(1)>p:nth-child(2)>picture>img[src]" },
+            { "name": "mobileImageAlt", "selector": "div:nth-child(1)>p:nth-child(2)>picture>img[alt]" },
+            { "name": "text", "selector": "div:nth-child(2)" }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "carousel-hero-slide",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Desktop Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Desktop Image Alt"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "mobileImage",
+          "label": "Mobile Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mobileImageAlt",
+          "label": "Mobile Image Alt"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "value": "",
+          "label": "Text (eyebrow, title, copy and button link)"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "carousel-hero",
+      "components": [
+        "carousel-hero-slide"
+      ]
+    }
+  ]
+}

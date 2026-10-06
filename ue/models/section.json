@@ -1,0 +1,61 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div></div>"
+        }
+      },
+      "filter": "section",
+      "model": "section"
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "Light background",
+              "value": "light"
+            },
+            {
+              "name": "Light blue background",
+              "value": "blue-light"
+            },
+            {
+              "name": "Dark background",
+              "value": "dark"
+            },
+            {
+              "name": "Centered text",
+              "value": "centered"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "carousel-hero",
+        "columns-intro",
+        "cards-product",
+        "accordion-more",
+        "columns-feature",
+        "columns-banner",
+        "columns-dark"
+      ]
+    }
+  ]
+}

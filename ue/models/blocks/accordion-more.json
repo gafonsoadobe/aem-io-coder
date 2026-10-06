@@ -1,0 +1,64 @@
+{
+  "definitions": [
+    {
+      "title": "Show More",
+      "id": "accordion-more",
+      "model": "accordion-more",
+      "filter": "accordion-more",
+      "plugins": {
+        "da": {
+          "name": "accordion-more",
+          "rows": 1,
+          "columns": 2
+        }
+      }
+    },
+    {
+      "title": "Show More Item",
+      "id": "accordion-more-item",
+      "model": "accordion-more-item",
+      "plugins": {
+        "da": {
+          "name": "accordion-more-item",
+          "rows": 2,
+          "columns": 0,
+          "fields": [
+            { "name": "summary", "selector": "div:nth-child(1)" },
+            { "name": "text", "selector": "div:nth-child(2)" }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "accordion-more-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "summary",
+          "value": "",
+          "label": "Toggle Label",
+          "required": true
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "value": "",
+          "label": "Content (text and list of links)",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "accordion-more",
+      "components": [
+        "accordion-more-item"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveImageInstrumentation, moveInstrumentation } from '../../scripts/scripts.js';
 
 const VIDEO_RE = /\.(webm|mp4|mov)(\?.*)?$/i;
 
@@ -24,7 +25,9 @@ function isLocalImage(src) {
 function optimizePictures(container, breakpoints) {
   container.querySelectorAll('picture > img').forEach((img) => {
     if (isLocalImage(img.src)) {
-      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, breakpoints));
+      const optimized = createOptimizedPicture(img.src, img.alt, false, breakpoints);
+      moveImageInstrumentation(img, optimized);
+      img.closest('picture').replaceWith(optimized);
     } else {
       img.setAttribute('loading', 'lazy');
     }
@@ -96,7 +99,10 @@ function decorateMediaCol(col) {
   optimizePictures(col, [{ media: '(min-width: 900px)', width: '1000' }, { width: '750' }]);
   // unwrap paragraphs left around the illustration
   col.querySelectorAll(':scope > p').forEach((p) => {
-    if (p.querySelector('picture') && p.textContent.trim() === '') p.replaceWith(...p.childNodes);
+    const picture = p.querySelector('picture');
+    if (!picture || p.textContent.trim() !== '') return;
+    if (!picture.hasAttribute('data-aue-resource')) moveInstrumentation(p, picture);
+    p.replaceWith(...p.childNodes);
   });
 }
 

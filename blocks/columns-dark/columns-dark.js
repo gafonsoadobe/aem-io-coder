@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveImageInstrumentation } from '../../scripts/scripts.js';
 
 /** Only same-origin (media bus) images can use the optimization query params. */
 function isLocalImage(src) {
@@ -13,7 +14,9 @@ function optimizePicture(pic) {
   const img = pic.querySelector('img');
   if (!img) return;
   if (isLocalImage(img.src)) {
-    pic.replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '1000' }, { width: '750' }]));
+    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '1000' }, { width: '750' }]);
+    moveImageInstrumentation(img, optimized);
+    pic.replaceWith(optimized);
   } else {
     img.setAttribute('loading', 'lazy');
   }

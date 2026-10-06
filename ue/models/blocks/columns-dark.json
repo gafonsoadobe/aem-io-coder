@@ -1,0 +1,20 @@
+{
+  "definitions": [
+    {
+      "title": "Dark Columns",
+      "id": "columns-dark",
+      "model": "columns",
+      "filter": "columns",
+      "plugins": {
+        "da": {
+          "name": "columns-dark",
+          "rows": 1,
+          "columns": 2,
+          "behaviour": "columns"
+        }
+      }
+    }
+  ],
+  "models": [],
+  "filters": []
+}

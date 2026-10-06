@@ -1,0 +1,57 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "carousel-hero",
+      "columns-intro",
+      "cards-product",
+      "accordion-more",
+      "columns-feature",
+      "columns-banner",
+      "columns-dark"
+    ]
+  },
+  {
+    "id": "accordion-more",
+    "components": [
+      "accordion-more-item"
+    ]
+  },
+  {
+    "id": "cards-product",
+    "components": [
+      "cards-product-card"
+    ]
+  },
+  {
+    "id": "carousel-hero",
+    "components": [
+      "carousel-hero-slide"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "columns-row"
+    ]
+  },
+  {
+    "id": "columns-row",
+    "components": []
+  },
+  {
+    "id": "columns-cell",
+    "components": [
+      "text",
+      "image"
+    ]
+  }
+]

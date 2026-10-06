@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveImageInstrumentation, moveInstrumentation } from '../../scripts/scripts.js';
 
 function updateActiveSlide(block, slideIndex) {
   block.dataset.activeSlide = slideIndex;
@@ -92,8 +93,16 @@ function decorateImageCell(cell, eager) {
   cell.className = 'carousel-hero-slide-image';
   const pictures = [...cell.querySelectorAll('picture')];
   const link = pictures[0] && pictures[0].closest('a');
+  const desktopImg = pictures[0]?.querySelector('img');
+  const wrapper = pictures[0]?.parentElement;
   const picture = buildSlidePicture(pictures, eager);
   if (!picture) return;
+  // the rendered <img> stands for the desktop image (the editor's default viewport);
+  // the mobile image stays editable in the slide's properties panel
+  moveImageInstrumentation(desktopImg, picture);
+  if (wrapper?.tagName === 'P' && !picture.hasAttribute('data-aue-resource')) {
+    moveInstrumentation(wrapper, picture);
+  }
   if (link) {
     // slide-wide link authored around the image: keep it
     const anchor = link.cloneNode(false);
@@ -132,6 +141,7 @@ function createSlide(row, idx, carouselId) {
   slide.className = 'carousel-hero-slide';
   slide.dataset.slideIndex = idx;
   slide.id = `carousel-hero-${carouselId}-slide-${idx}`;
+  moveInstrumentation(row, slide);
 
   const cells = [...row.children];
   const imageCell = cells.find((c) => c.querySelector('picture'));

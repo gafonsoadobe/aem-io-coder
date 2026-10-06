@@ -13,6 +13,56 @@ import {
 } from './aem.js';
 
 /**
+ * Moves the given attributes (all, if omitted) from one element to another.
+ * @param {Element} from the element to move attributes from
+ * @param {Element} to the element to move attributes to
+ * @param {string[]} [attributes] attribute names
+ */
+export function moveAttributes(from, to, attributes) {
+  if (!from || !to || from === to) return;
+  const names = attributes || [...from.attributes].map(({ nodeName }) => nodeName);
+  names.forEach((attr) => {
+    const value = from.getAttribute(attr);
+    if (value) {
+      to.setAttribute(attr, value);
+      from.removeAttribute(attr);
+    }
+  });
+}
+
+/**
+ * Moves Universal Editor instrumentation (data-aue-*, data-richtext-*) from an
+ * authored element to the element that replaces it during decoration.
+ * No-op outside the editor, where those attributes are absent.
+ * @param {Element} from the authored element
+ * @param {Element} to the decorated replacement
+ */
+export function moveInstrumentation(from, to) {
+  if (!from || !to) return;
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
+}
+
+/**
+ * Moves editor instrumentation from an authored image (<img> and its <picture>)
+ * to the optimized picture, or inline svg, that replaces it.
+ * @param {HTMLImageElement} fromImg the authored image
+ * @param {Element} to the replacement picture, img or svg
+ */
+export function moveImageInstrumentation(fromImg, to) {
+  if (!fromImg || !to) return;
+  const toImg = to.tagName === 'IMG' ? to : to.querySelector('img');
+  moveInstrumentation(fromImg, toImg || to);
+  const fromPicture = fromImg.closest('picture');
+  if (fromPicture && to.tagName === 'PICTURE') moveInstrumentation(fromPicture, to);
+}
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
@@ -221,6 +271,10 @@ function enableLocalContentLinks() {
 }
 
 async function loadPage() {
+  // Universal Editor support (content served from *.ue.da.live)
+  if (/\.(stage-ue|ue)\.da\.live$/.test(window.location.hostname)) {
+    import('../ue/scripts/ue.js').then(({ default: ue }) => ue());
+  }
   enableLocalContentLinks();
   await loadEager(document);
   await loadLazy(document);

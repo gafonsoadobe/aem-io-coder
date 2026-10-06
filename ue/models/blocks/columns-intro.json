@@ -1,0 +1,20 @@
+{
+  "definitions": [
+    {
+      "title": "Intro Columns",
+      "id": "columns-intro",
+      "model": "columns",
+      "filter": "columns",
+      "plugins": {
+        "da": {
+          "name": "columns-intro",
+          "rows": 1,
+          "columns": 2,
+          "behaviour": "columns"
+        }
+      }
+    }
+  ],
+  "models": [],
+  "filters": []
+}

@@ -1,0 +1,69 @@
+{
+  "definitions": [
+    {
+      "title": "Product Cards",
+      "id": "cards-product",
+      "model": "cards-product",
+      "filter": "cards-product",
+      "plugins": {
+        "da": {
+          "name": "cards-product",
+          "rows": 1,
+          "columns": 2
+        }
+      }
+    },
+    {
+      "title": "Product Card",
+      "id": "cards-product-card",
+      "model": "cards-product-card",
+      "plugins": {
+        "da": {
+          "name": "cards-product-card",
+          "rows": 1,
+          "columns": 2,
+          "fields": [
+            { "name": "image", "selector": "div:nth-child(1)>picture>img[src]" },
+            { "name": "imageAlt", "selector": "div:nth-child(1)>picture>img[alt]" },
+            { "name": "text", "selector": "div:nth-child(2)" }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-product-card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Icon",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Icon Alt"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "value": "",
+          "label": "Text (title, description and button link)"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-product",
+      "components": [
+        "cards-product-card"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveImageInstrumentation, moveInstrumentation } from '../../scripts/scripts.js';
 
 const SVG_DATA_RE = /^data:image\/svg\+xml(;[^,]*)?,(.*)$/is;
 
@@ -60,9 +61,13 @@ function decorateImage(img) {
   const target = picture || img;
   const svg = inlineSvgIcon(img);
   if (svg) {
+    moveImageInstrumentation(img, svg);
+    if (picture) moveInstrumentation(picture, svg);
     target.replaceWith(svg);
   } else if (isLocalImage(img.src)) {
-    target.replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '200' }]));
+    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '200' }]);
+    moveImageInstrumentation(img, optimized);
+    target.replaceWith(optimized);
   } else {
     // external or non-SVG data images are kept as authored
     img.setAttribute('loading', 'lazy');
@@ -194,6 +199,7 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.className = 'cards-product-card';
+    moveInstrumentation(row, li);
     const inner = document.createElement('div');
     inner.className = 'cards-product-card-inner';
     while (row.firstElementChild) inner.append(row.firstElementChild);

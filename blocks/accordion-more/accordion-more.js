@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 /**
  * loads and decorates the accordion-more block
  * Each row = item: cell1 toggle label, cell2 expandable content (text + list of links).
@@ -26,9 +28,11 @@ export default function decorate(block) {
       open.className = 'accordion-more-label-open';
       open.append(...openP.childNodes);
       summary.append(closed, open);
+      moveInstrumentation(labelCell, summary);
     } else {
       const labelText = document.createElement('span');
       labelText.append(...(paragraphs[0] || labelCell).childNodes);
+      moveInstrumentation(labelCell, labelText);
       summary.append(labelText);
     }
 
@@ -39,6 +43,7 @@ export default function decorate(block) {
 
     const details = document.createElement('details');
     details.className = 'accordion-more-item';
+    moveInstrumentation(row, details);
     details.append(summary, body);
     row.replaceWith(details);
   });

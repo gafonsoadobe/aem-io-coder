@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveImageInstrumentation, moveInstrumentation } from '../../scripts/scripts.js';
 
 const DESKTOP_MEDIA = '(min-width: 900px)';
 
@@ -93,8 +94,17 @@ export default function decorate(block) {
       const pictures = [...col.querySelectorAll('picture')];
       if (pictures.length && col.textContent.trim() === '') {
         col.classList.add('columns-banner-img-col');
+        const desktopImg = pictures[0].querySelector('img');
+        const wrapper = pictures[0].parentElement;
         const picture = buildBannerPicture(pictures);
-        if (picture) col.replaceChildren(picture);
+        if (picture) {
+          // the rendered <img> stands for the desktop image (the editor's default viewport)
+          moveImageInstrumentation(desktopImg, picture);
+          if (wrapper.tagName === 'P' && !picture.hasAttribute('data-aue-resource')) {
+            moveInstrumentation(wrapper, picture);
+          }
+          col.replaceChildren(picture);
+        }
         // a text-first row places the panel left; an image-first row mirrors it
         if (col === row.firstElementChild) row.classList.add('columns-banner-img-first');
       } else if (col.textContent.trim() === '' && !col.children.length) {

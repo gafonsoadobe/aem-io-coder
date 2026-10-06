@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveImageInstrumentation } from '../../scripts/scripts.js';
 
 /** Only same-origin (media bus) images can use the optimization query params. */
 function isLocalImage(src) {
@@ -56,6 +57,7 @@ export default function decorate(block) {
         const img = pic.querySelector('img');
         if (img && isLocalImage(img.src)) {
           const optimized = createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '1200' }, { width: '750' }]);
+          moveImageInstrumentation(img, optimized);
           col.replaceChildren(optimized);
         } else if (img) {
           // external images are kept as authored (no media-bus params)

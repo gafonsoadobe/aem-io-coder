@@ -1,0 +1,20 @@
+{
+  "definitions": [
+    {
+      "title": "Feature Columns",
+      "id": "columns-feature",
+      "model": "columns",
+      "filter": "columns",
+      "plugins": {
+        "da": {
+          "name": "columns-feature",
+          "rows": 1,
+          "columns": 2,
+          "behaviour": "columns"
+        }
+      }
+    }
+  ],
+  "models": [],
+  "filters": []
+}

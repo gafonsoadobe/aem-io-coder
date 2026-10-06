@@ -1,0 +1,265 @@
+{
+  "groups": [
+    {
+      "title": "Default Content",
+      "id": "default",
+      "components": [
+        {
+          "title": "Text",
+          "id": "text",
+          "model": "text",
+          "plugins": {
+            "da": {
+              "name": "text",
+              "type": "text"
+            }
+          }
+        },
+        {
+          "title": "Image",
+          "id": "image",
+          "model": "image",
+          "plugins": {
+            "da": {
+              "name": "image",
+              "type": "image",
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "img[alt]"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sections",
+      "id": "sections",
+      "components": [
+        {
+          "title": "Section",
+          "id": "section",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div></div>"
+            }
+          },
+          "filter": "section",
+          "model": "section"
+        }
+      ]
+    },
+    {
+      "title": "Blocks",
+      "id": "blocks",
+      "components": [
+        {
+          "title": "Show More",
+          "id": "accordion-more",
+          "model": "accordion-more",
+          "filter": "accordion-more",
+          "plugins": {
+            "da": {
+              "name": "accordion-more",
+              "rows": 1,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "Show More Item",
+          "id": "accordion-more-item",
+          "model": "accordion-more-item",
+          "plugins": {
+            "da": {
+              "name": "accordion-more-item",
+              "rows": 2,
+              "columns": 0,
+              "fields": [
+                {
+                  "name": "summary",
+                  "selector": "div:nth-child(1)"
+                },
+                {
+                  "name": "text",
+                  "selector": "div:nth-child(2)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Product Cards",
+          "id": "cards-product",
+          "model": "cards-product",
+          "filter": "cards-product",
+          "plugins": {
+            "da": {
+              "name": "cards-product",
+              "rows": 1,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "Product Card",
+          "id": "cards-product-card",
+          "model": "cards-product-card",
+          "plugins": {
+            "da": {
+              "name": "cards-product-card",
+              "rows": 1,
+              "columns": 2,
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1)>picture>img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div:nth-child(1)>picture>img[alt]"
+                },
+                {
+                  "name": "text",
+                  "selector": "div:nth-child(2)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Carousel Hero",
+          "id": "carousel-hero",
+          "model": "carousel-hero",
+          "filter": "carousel-hero",
+          "plugins": {
+            "da": {
+              "name": "carousel-hero",
+              "rows": 1,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "Hero Slide",
+          "id": "carousel-hero-slide",
+          "model": "carousel-hero-slide",
+          "plugins": {
+            "da": {
+              "name": "carousel-hero-slide",
+              "unsafeHTML": "<div><div><p><picture><img loading=\"lazy\"></picture></p><p><picture><img loading=\"lazy\"></picture></p></div><div><p></p></div></div>",
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[alt]"
+                },
+                {
+                  "name": "mobileImage",
+                  "selector": "div:nth-child(1)>p:nth-child(2)>picture>img[src]"
+                },
+                {
+                  "name": "mobileImageAlt",
+                  "selector": "div:nth-child(1)>p:nth-child(2)>picture>img[alt]"
+                },
+                {
+                  "name": "text",
+                  "selector": "div:nth-child(2)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Banner Columns",
+          "id": "columns-banner",
+          "model": "columns",
+          "filter": "columns",
+          "plugins": {
+            "da": {
+              "name": "columns-banner",
+              "rows": 1,
+              "columns": 2,
+              "behaviour": "columns"
+            }
+          }
+        },
+        {
+          "title": "Dark Columns",
+          "id": "columns-dark",
+          "model": "columns",
+          "filter": "columns",
+          "plugins": {
+            "da": {
+              "name": "columns-dark",
+              "rows": 1,
+              "columns": 2,
+              "behaviour": "columns"
+            }
+          }
+        },
+        {
+          "title": "Feature Columns",
+          "id": "columns-feature",
+          "model": "columns",
+          "filter": "columns",
+          "plugins": {
+            "da": {
+              "name": "columns-feature",
+              "rows": 1,
+              "columns": 2,
+              "behaviour": "columns"
+            }
+          }
+        },
+        {
+          "title": "Intro Columns",
+          "id": "columns-intro",
+          "model": "columns",
+          "filter": "columns",
+          "plugins": {
+            "da": {
+              "name": "columns-intro",
+              "rows": 1,
+              "columns": 2,
+              "behaviour": "columns"
+            }
+          }
+        },
+        {
+          "title": "Columns Row",
+          "id": "columns-row",
+          "model": "columns-row",
+          "filter": "columns-row",
+          "plugins": {
+            "da": {
+              "name": "columns-row",
+              "behaviour": "columns-row"
+            }
+          }
+        },
+        {
+          "title": "Columns Cell",
+          "id": "columns-cell",
+          "model": "columns-cell",
+          "filter": "columns-cell",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div></div>",
+              "behaviour": "columns-cell"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
