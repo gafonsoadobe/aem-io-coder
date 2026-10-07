@@ -64,7 +64,7 @@ export default function decorate(block) {
           img.setAttribute('loading', 'lazy');
           col.replaceChildren(pic);
         }
-      } else if (!hasText && !col.children.length) {
+      } else if (!hasText && !col.children.length && !col.hasAttribute('data-aue-prop')) {
         col.remove();
       } else {
         col.classList.add('columns-intro-text-col');

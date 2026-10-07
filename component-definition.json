@@ -224,14 +224,25 @@
         {
           "title": "Intro Columns",
           "id": "columns-intro",
-          "model": "columns",
-          "filter": "columns",
+          "model": "columns-intro",
           "plugins": {
             "da": {
               "name": "columns-intro",
-              "rows": 1,
-              "columns": 2,
-              "behaviour": "columns"
+              "unsafeHTML": "<div class=\"columns-intro\"><div><div><picture><img loading=\"lazy\"></picture></div><div><h2></h2><p></p></div></div></div>",
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div>div:nth-child(1)>picture>img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div>div:nth-child(1)>picture>img[alt]"
+                },
+                {
+                  "name": "text",
+                  "selector": "div>div:nth-child(2)"
+                }
+              ]
             }
           }
         },
