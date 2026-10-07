@@ -29,7 +29,7 @@ export function submitFailure(e, form) {
     errorMessage = document.createElement('div');
     errorMessage.className = 'form-message error-message';
   }
-  errorMessage.innerHTML = 'Some error occured while submitting the form'; // TODO: translation
+  errorMessage.innerHTML = 'Não foi possível enviar seus dados. Tente novamente em instantes.';
   form.prepend(errorMessage);
   errorMessage.scrollIntoView({ behavior: 'smooth' });
   form.setAttribute('data-submitting', 'false');
