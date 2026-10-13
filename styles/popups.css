@@ -200,7 +200,8 @@ dialog.popup-dialog[open]::backdrop {
 
 .popup-simulation-stage[data-device="mobile"] {
   max-width: 390px;
-  min-height: 760px;
+  height: 760px;
+  min-height: 0;
   border-width: 10px;
   border-color: var(--agi-navy);
   border-radius: 36px;
@@ -276,8 +277,10 @@ dialog.popup-dialog[open]::backdrop {
 
 .popup-simulation-stage[data-device="mobile"] .popup-simulation-dialog {
   max-width: none;
+  max-height: calc(100% - 48px);
   margin: auto 0 0;
   border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  overflow: auto;
 }
 
 .popup-simulation-rules {

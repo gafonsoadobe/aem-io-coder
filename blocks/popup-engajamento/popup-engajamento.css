@@ -48,6 +48,13 @@
   margin: 0;
 }
 
+/* fields fit the popup width (also in the mobile simulation on a desktop screen) */
+.popup-engajamento .popup-form input,
+.popup-engajamento .popup-form select,
+.popup-engajamento .popup-form textarea {
+  box-sizing: border-box;
+}
+
 @container popup (width >= 480px) {
   .popup-engajamento .popup-body {
     padding: 40px;
