@@ -200,6 +200,11 @@ async function loadEager(doc) {
   }
 }
 
+/** True when the page is served to the Universal Editor (*.ue.da.live). */
+function isEditor() {
+  return /\.(stage-ue|ue)\.da\.live$/.test(window.location.hostname);
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -218,6 +223,12 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // popups: campaigns and rules come from the Popup Manager page (not in the editor)
+  if (!isEditor()) {
+    // eslint-disable-next-line import/no-cycle
+    import('./popups/popup-manager.js').then(({ default: initPopups }) => initPopups());
+  }
 }
 
 /**
@@ -272,7 +283,7 @@ function enableLocalContentLinks() {
 
 async function loadPage() {
   // Universal Editor support (content served from *.ue.da.live)
-  if (/\.(stage-ue|ue)\.da\.live$/.test(window.location.hostname)) {
+  if (isEditor()) {
     import('../ue/scripts/ue.js').then(({ default: ue }) => ue());
   }
   enableLocalContentLinks();

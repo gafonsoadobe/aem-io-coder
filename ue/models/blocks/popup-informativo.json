@@ -1,0 +1,93 @@
+{
+  "definitions": [
+    {
+      "title": "Popup Informativo",
+      "id": "popup-informativo",
+      "model": "popup-informativo",
+      "plugins": {
+        "da": {
+          "name": "popup-informativo",
+          "unsafeHTML": "<div class=\"popup-informativo\"><div><div></div></div><div><div></div></div><div><div><p>info</p></div></div><div><div></div></div><div><div></div></div></div>",
+          "fields": [
+            {
+              "name": "title",
+              "selector": "div:nth-child(1)>div"
+            },
+            {
+              "name": "message",
+              "selector": "div:nth-child(2)>div"
+            },
+            {
+              "name": "level",
+              "selector": "div:nth-child(3)>div"
+            },
+            {
+              "name": "ctaLabel",
+              "selector": "div:nth-child(4)>div"
+            },
+            {
+              "name": "ctaLink",
+              "selector": "div:nth-child(5)>div"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "popup-informativo",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Título",
+          "required": true
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "message",
+          "value": "",
+          "label": "Mensagem",
+          "required": true
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "level",
+          "label": "Nível de prioridade",
+          "value": "info",
+          "options": [
+            {
+              "name": "Informação",
+              "value": "info"
+            },
+            {
+              "name": "Atenção",
+              "value": "aviso"
+            },
+            {
+              "name": "Importante (crítico)",
+              "value": "critico"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaLabel",
+          "label": "CTA (opcional) – texto do botão"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "ctaLink",
+          "label": "CTA (opcional) – link"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

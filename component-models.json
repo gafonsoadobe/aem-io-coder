@@ -193,5 +193,262 @@
         }
       }
     ]
+  },
+  {
+    "id": "popup-engajamento",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Título",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "value": "",
+        "label": "Texto"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLabel",
+        "label": "CTA – texto do botão"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA – link"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "form",
+        "label": "Formulário (opcional, substitui o CTA) – ex.: /forms/abra-sua-conta.json"
+      }
+    ]
+  },
+  {
+    "id": "popup-informativo",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Título",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "message",
+        "value": "",
+        "label": "Mensagem",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "level",
+        "label": "Nível de prioridade",
+        "value": "info",
+        "options": [
+          {
+            "name": "Informação",
+            "value": "info"
+          },
+          {
+            "name": "Atenção",
+            "value": "aviso"
+          },
+          {
+            "name": "Importante (crítico)",
+            "value": "critico"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLabel",
+        "label": "CTA (opcional) – texto do botão"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA (opcional) – link"
+      }
+    ]
+  },
+  {
+    "id": "popup-campanha",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "name",
+        "label": "Nome da campanha",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "popup",
+        "label": "Popup (página em /popups/)",
+        "required": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "active",
+        "label": "Ativo",
+        "value": false
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "priority",
+        "label": "Prioridade (1 = mais alta)",
+        "value": 10
+      },
+      {
+        "component": "date-time",
+        "valueType": "date-time",
+        "name": "start",
+        "label": "Data inicial (vazio = imediatamente)"
+      },
+      {
+        "component": "date-time",
+        "valueType": "date-time",
+        "name": "end",
+        "label": "Data final (vazio = sem fim)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pages",
+        "label": "Páginas elegíveis (separadas por vírgula: /, /cartoes/*, *, !/excluir)",
+        "value": "/"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "trigger",
+        "label": "Trigger",
+        "value": "imediato",
+        "options": [
+          {
+            "name": "Imediato",
+            "value": "imediato"
+          },
+          {
+            "name": "Após um tempo",
+            "value": "tempo"
+          },
+          {
+            "name": "Ao rolar a página",
+            "value": "scroll"
+          }
+        ]
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "triggerValue",
+        "label": "Valor do trigger (segundos para tempo, % para scroll)",
+        "value": 0
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "frequencyCap",
+        "label": "Frequency cap – máximo de exibições (0 = sem limite)",
+        "value": 1
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "frequencyPeriod",
+        "label": "Frequency cap – período",
+        "value": "dia",
+        "options": [
+          {
+            "name": "Por sessão",
+            "value": "sessao"
+          },
+          {
+            "name": "Por dia",
+            "value": "dia"
+          },
+          {
+            "name": "Por semana",
+            "value": "semana"
+          },
+          {
+            "name": "Por mês",
+            "value": "mes"
+          },
+          {
+            "name": "No total (por visitante)",
+            "value": "sempre"
+          }
+        ]
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "cooldownHours",
+        "label": "Cooldown – horas até poder exibir de novo (0 = sem cooldown)",
+        "value": 24
+      }
+    ]
+  },
+  {
+    "id": "popup-promocional",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Imagem",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Texto alternativo da imagem"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Título",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "value": "",
+        "label": "Texto"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLabel",
+        "label": "CTA – texto do botão"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA – link"
+      }
+    ]
   }
 ]

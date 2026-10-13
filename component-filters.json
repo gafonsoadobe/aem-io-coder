@@ -16,7 +16,11 @@
       "accordion-more",
       "columns-feature",
       "columns-banner",
-      "columns-dark"
+      "columns-dark",
+      "popup-promocional",
+      "popup-informativo",
+      "popup-engajamento",
+      "popup-manager"
     ]
   },
   {
@@ -52,6 +56,12 @@
     "components": [
       "text",
       "image"
+    ]
+  },
+  {
+    "id": "popup-manager",
+    "components": [
+      "popup-campanha"
     ]
   }
 ]

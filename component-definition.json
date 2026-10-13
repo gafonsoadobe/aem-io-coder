@@ -269,6 +269,183 @@
               "behaviour": "columns-cell"
             }
           }
+        },
+        {
+          "title": "Popup Engajamento",
+          "id": "popup-engajamento",
+          "model": "popup-engajamento",
+          "plugins": {
+            "da": {
+              "name": "popup-engajamento",
+              "unsafeHTML": "<div class=\"popup-engajamento\"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+              "fields": [
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(1)>div"
+                },
+                {
+                  "name": "text",
+                  "selector": "div:nth-child(2)>div"
+                },
+                {
+                  "name": "ctaLabel",
+                  "selector": "div:nth-child(3)>div"
+                },
+                {
+                  "name": "ctaLink",
+                  "selector": "div:nth-child(4)>div"
+                },
+                {
+                  "name": "form",
+                  "selector": "div:nth-child(5)>div"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Popup Informativo",
+          "id": "popup-informativo",
+          "model": "popup-informativo",
+          "plugins": {
+            "da": {
+              "name": "popup-informativo",
+              "unsafeHTML": "<div class=\"popup-informativo\"><div><div></div></div><div><div></div></div><div><div><p>info</p></div></div><div><div></div></div><div><div></div></div></div>",
+              "fields": [
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(1)>div"
+                },
+                {
+                  "name": "message",
+                  "selector": "div:nth-child(2)>div"
+                },
+                {
+                  "name": "level",
+                  "selector": "div:nth-child(3)>div"
+                },
+                {
+                  "name": "ctaLabel",
+                  "selector": "div:nth-child(4)>div"
+                },
+                {
+                  "name": "ctaLink",
+                  "selector": "div:nth-child(5)>div"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Popup Manager",
+          "id": "popup-manager",
+          "model": "popup-manager",
+          "filter": "popup-manager",
+          "plugins": {
+            "da": {
+              "name": "popup-manager",
+              "rows": 0,
+              "columns": 0
+            }
+          }
+        },
+        {
+          "title": "Campanha de Popup",
+          "id": "popup-campanha",
+          "model": "popup-campanha",
+          "plugins": {
+            "da": {
+              "name": "popup-campanha",
+              "unsafeHTML": "<div><div><p>Nova campanha</p></div><div></div><div><p>false</p></div><div><p>10</p></div><div></div><div></div><div><p>/</p></div><div><p>imediato</p></div><div><p>0</p></div><div><p>1</p></div><div><p>dia</p></div><div><p>24</p></div></div>",
+              "fields": [
+                {
+                  "name": "name",
+                  "selector": "div:nth-child(1)"
+                },
+                {
+                  "name": "popup",
+                  "selector": "div:nth-child(2)"
+                },
+                {
+                  "name": "active",
+                  "selector": "div:nth-child(3)"
+                },
+                {
+                  "name": "priority",
+                  "selector": "div:nth-child(4)"
+                },
+                {
+                  "name": "start",
+                  "selector": "div:nth-child(5)"
+                },
+                {
+                  "name": "end",
+                  "selector": "div:nth-child(6)"
+                },
+                {
+                  "name": "pages",
+                  "selector": "div:nth-child(7)"
+                },
+                {
+                  "name": "trigger",
+                  "selector": "div:nth-child(8)"
+                },
+                {
+                  "name": "triggerValue",
+                  "selector": "div:nth-child(9)"
+                },
+                {
+                  "name": "frequencyCap",
+                  "selector": "div:nth-child(10)"
+                },
+                {
+                  "name": "frequencyPeriod",
+                  "selector": "div:nth-child(11)"
+                },
+                {
+                  "name": "cooldownHours",
+                  "selector": "div:nth-child(12)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Popup Promocional",
+          "id": "popup-promocional",
+          "model": "popup-promocional",
+          "plugins": {
+            "da": {
+              "name": "popup-promocional",
+              "unsafeHTML": "<div class=\"popup-promocional\"><div><div><picture><img loading=\"lazy\"></picture></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1)>div>picture>img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div:nth-child(1)>div>picture>img[alt]"
+                },
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(2)>div"
+                },
+                {
+                  "name": "text",
+                  "selector": "div:nth-child(3)>div"
+                },
+                {
+                  "name": "ctaLabel",
+                  "selector": "div:nth-child(4)>div"
+                },
+                {
+                  "name": "ctaLink",
+                  "selector": "div:nth-child(5)>div"
+                }
+              ]
+            }
+          }
         }
       ]
     }

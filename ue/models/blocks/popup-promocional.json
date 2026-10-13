@@ -1,0 +1,88 @@
+{
+  "definitions": [
+    {
+      "title": "Popup Promocional",
+      "id": "popup-promocional",
+      "model": "popup-promocional",
+      "plugins": {
+        "da": {
+          "name": "popup-promocional",
+          "unsafeHTML": "<div class=\"popup-promocional\"><div><div><picture><img loading=\"lazy\"></picture></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+          "fields": [
+            {
+              "name": "image",
+              "selector": "div:nth-child(1)>div>picture>img[src]"
+            },
+            {
+              "name": "imageAlt",
+              "selector": "div:nth-child(1)>div>picture>img[alt]"
+            },
+            {
+              "name": "title",
+              "selector": "div:nth-child(2)>div"
+            },
+            {
+              "name": "text",
+              "selector": "div:nth-child(3)>div"
+            },
+            {
+              "name": "ctaLabel",
+              "selector": "div:nth-child(4)>div"
+            },
+            {
+              "name": "ctaLink",
+              "selector": "div:nth-child(5)>div"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "popup-promocional",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Imagem",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Texto alternativo da imagem"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Título",
+          "required": true
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "value": "",
+          "label": "Texto"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaLabel",
+          "label": "CTA – texto do botão"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "ctaLink",
+          "label": "CTA – link"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

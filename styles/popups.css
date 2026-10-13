@@ -1,0 +1,127 @@
+/* Popup dialog shell, loaded by the Popup Manager only when a popup will be shown.
+   Popup content styles live in the popup blocks (blocks/popup-*). */
+
+body:has(dialog.popup-dialog[open]) {
+  overflow: hidden;
+}
+
+dialog.popup-dialog {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  max-height: calc(100dvh - 24px);
+  margin: auto auto 0;
+  border: 0;
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  padding: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  box-shadow: 0 -8px 32px rgb(0 15 68 / 25%);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+dialog.popup-dialog::backdrop {
+  background: rgb(0 15 68 / 60%);
+}
+
+dialog.popup-dialog[open] {
+  animation: popup-slide-up 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+dialog.popup-dialog[open]::backdrop {
+  animation: popup-fade-in 0.3s ease-out;
+}
+
+.popup-dialog .popup-dialog-inner {
+  position: relative;
+}
+
+.popup-dialog .popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: rgb(255 255 255 / 90%);
+  color: var(--agi-navy);
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgb(0 15 68 / 20%);
+}
+
+.popup-dialog .popup-close:hover {
+  background: var(--agi-blue-50);
+}
+
+.popup-dialog .popup-close:focus-visible {
+  outline: 2px solid var(--agi-blue-200);
+  outline-offset: 2px;
+}
+
+/* popup blocks render as a card on their own page; inside the dialog they fill it */
+.popup-dialog .block {
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@keyframes popup-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes popup-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popup-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (width >= 600px) {
+  dialog.popup-dialog {
+    width: calc(100% - 48px);
+    max-width: 560px;
+    max-height: calc(100dvh - 48px);
+    margin: auto;
+    border-radius: var(--panel-radius);
+    box-shadow: 0 16px 48px rgb(0 15 68 / 30%);
+  }
+
+  dialog.popup-dialog.popup-promocional-dialog {
+    max-width: 880px;
+  }
+
+  dialog.popup-dialog[open] {
+    animation-name: popup-zoom-in;
+  }
+
+  .popup-dialog .block {
+    border-radius: var(--panel-radius);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.popup-dialog[open],
+  dialog.popup-dialog[open]::backdrop {
+    animation: none;
+  }
+}

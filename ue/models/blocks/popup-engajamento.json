@@ -1,0 +1,77 @@
+{
+  "definitions": [
+    {
+      "title": "Popup Engajamento",
+      "id": "popup-engajamento",
+      "model": "popup-engajamento",
+      "plugins": {
+        "da": {
+          "name": "popup-engajamento",
+          "unsafeHTML": "<div class=\"popup-engajamento\"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+          "fields": [
+            {
+              "name": "title",
+              "selector": "div:nth-child(1)>div"
+            },
+            {
+              "name": "text",
+              "selector": "div:nth-child(2)>div"
+            },
+            {
+              "name": "ctaLabel",
+              "selector": "div:nth-child(3)>div"
+            },
+            {
+              "name": "ctaLink",
+              "selector": "div:nth-child(4)>div"
+            },
+            {
+              "name": "form",
+              "selector": "div:nth-child(5)>div"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "popup-engajamento",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Título",
+          "required": true
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "value": "",
+          "label": "Texto"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaLabel",
+          "label": "CTA – texto do botão"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "ctaLink",
+          "label": "CTA – link"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "form",
+          "label": "Formulário (opcional, substitui o CTA) – ex.: /forms/abra-sua-conta.json"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

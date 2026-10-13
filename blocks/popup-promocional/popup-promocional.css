@@ -1,0 +1,76 @@
+/* popup-promocional: image + title, text and CTA. Card on its page, content of the dialog when shown. */
+.popup-promocional {
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: var(--panel-radius);
+  background: var(--background-color);
+  box-shadow: 0 8px 32px rgb(0 15 68 / 15%);
+  overflow: hidden;
+}
+
+.popup-promocional .popup-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-promocional .popup-media {
+  line-height: 0;
+  background: var(--agi-blue-50);
+}
+
+.popup-promocional .popup-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.popup-promocional .popup-body {
+  padding: 24px;
+}
+
+.popup-promocional .popup-title {
+  margin: 0 0 12px;
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-l);
+  line-height: 1.15;
+}
+
+.popup-promocional .popup-text {
+  font-size: var(--body-font-size-s);
+}
+
+.popup-promocional .popup-text > :first-child {
+  margin-top: 0;
+}
+
+.popup-promocional .popup-actions {
+  margin: 24px 0 0;
+}
+
+@media (width >= 600px) {
+  .popup-promocional .popup-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .popup-promocional .popup-media {
+    flex: 0 0 45%;
+  }
+
+  .popup-promocional .popup-media picture {
+    display: block;
+    height: 100%;
+  }
+
+  .popup-promocional .popup-media img {
+    height: 100%;
+    min-height: 360px;
+  }
+
+  .popup-promocional .popup-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 40px;
+  }
+}
