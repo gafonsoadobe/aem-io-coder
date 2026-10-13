@@ -45,6 +45,9 @@
 }
 
 .popup-engajamento .popup-form .form {
+  /* the form grid spacing for small screens: the popup is never wider than 560px */
+  --form-field-horz-gap: 10px;
+
   margin: 0;
 }
 
