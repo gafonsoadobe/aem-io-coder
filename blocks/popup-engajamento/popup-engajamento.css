@@ -1,0 +1,65 @@
+/* popup-engajamento: brand green panel with title, text and CTA or a simple form */
+
+/* standalone card (outside the popup shell and the simulation) */
+.popup-engajamento:not(.popup-simulated) {
+  max-width: 560px;
+  margin: 0 auto;
+  border-radius: var(--panel-radius);
+  box-shadow: 0 8px 32px rgb(0 15 68 / 15%);
+  overflow: hidden;
+}
+
+.popup-engajamento .popup-card {
+  background: var(--agi-green-100);
+  color: var(--agi-navy);
+}
+
+.popup-engajamento .popup-body {
+  padding: 28px 24px 24px;
+}
+
+.popup-engajamento .popup-title {
+  margin: 0 48px 12px 0;
+  color: var(--agi-navy);
+  font-size: var(--heading-font-size-l);
+  line-height: 1.15;
+}
+
+.popup-engajamento .popup-text {
+  font-size: var(--body-font-size-s);
+}
+
+.popup-engajamento .popup-text > :first-child {
+  margin-top: 0;
+}
+
+.popup-engajamento .popup-actions {
+  margin: 20px 0 0;
+}
+
+.popup-engajamento .popup-form {
+  margin-top: 20px;
+  border-radius: var(--card-radius);
+  padding: 20px;
+  background: var(--background-color);
+}
+
+.popup-engajamento .popup-form .form {
+  /* the form grid spacing for small screens: the popup is never wider than 560px */
+  --form-field-horz-gap: 10px;
+
+  margin: 0;
+}
+
+/* fields fit the popup width (also in the mobile simulation on a desktop screen) */
+.popup-engajamento .popup-form input,
+.popup-engajamento .popup-form select,
+.popup-engajamento .popup-form textarea {
+  box-sizing: border-box;
+}
+
+@container popup (width >= 480px) {
+  .popup-engajamento .popup-body {
+    padding: 40px;
+  }
+}

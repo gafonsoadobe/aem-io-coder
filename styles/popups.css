@@ -1,0 +1,344 @@
+/* Popup shell, shared by the dialog opened by the Popup Manager and by the
+   simulation shown on the popup page. Loaded only when a popup is shown or simulated.
+   Popup content styles live in the popup blocks (blocks/popup-*), which use
+   container queries on .popup-dialog-inner so the same layout works in both. */
+
+body:has(dialog.popup-dialog[open]) {
+  overflow: hidden;
+}
+
+.popup-dialog {
+  box-sizing: border-box;
+  border: 0;
+  padding: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.popup-dialog .popup-dialog-inner {
+  position: relative;
+  container: popup / inline-size;
+}
+
+.popup-dialog .popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: rgb(255 255 255 / 90%);
+  color: var(--agi-navy);
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgb(0 15 68 / 20%);
+}
+
+/* the simulated close button is decorative */
+.popup-dialog span.popup-close {
+  cursor: default;
+}
+
+.popup-dialog .popup-close:hover {
+  background: var(--agi-blue-50);
+}
+
+.popup-dialog .popup-close:focus-visible {
+  outline: 2px solid var(--agi-blue-200);
+  outline-offset: 2px;
+}
+
+/* inside the shell, the popup block fills it */
+.popup-dialog .popup-dialog-inner > .block {
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* the dialog: bottom sheet on mobile, centered from 600px */
+dialog.popup-dialog {
+  width: 100%;
+  max-width: 100%;
+  max-height: calc(100dvh - 24px);
+  margin: auto auto 0;
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  box-shadow: 0 -8px 32px rgb(0 15 68 / 25%);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+dialog.popup-dialog::backdrop {
+  background: rgb(0 15 68 / 60%);
+}
+
+dialog.popup-dialog[open] {
+  animation: popup-slide-up 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+dialog.popup-dialog[open]::backdrop {
+  animation: popup-fade-in 0.3s ease-out;
+}
+
+@keyframes popup-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes popup-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popup-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (width >= 600px) {
+  dialog.popup-dialog {
+    width: calc(100% - 48px);
+    max-width: 560px;
+    max-height: calc(100dvh - 48px);
+    margin: auto;
+    border-radius: var(--panel-radius);
+    box-shadow: 0 16px 48px rgb(0 15 68 / 30%);
+  }
+
+  dialog.popup-dialog.popup-promocional-dialog {
+    max-width: 880px;
+  }
+
+  dialog.popup-dialog[open] {
+    animation-name: popup-zoom-in;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.popup-dialog[open],
+  dialog.popup-dialog[open]::backdrop {
+    animation: none;
+  }
+}
+
+/* simulation on the popup page: the popup over a dimmed page, desktop or mobile */
+.popup-simulation {
+  display: grid;
+  gap: 16px;
+}
+
+.popup-simulation-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.popup-simulation-label {
+  margin: 0;
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+.popup-simulation-devices {
+  display: inline-flex;
+  border: 1px solid var(--agi-blue-200);
+  border-radius: var(--button-radius);
+  overflow: hidden;
+}
+
+.popup-simulation-devices button {
+  min-height: 40px;
+  border: 0;
+  padding: 0 16px;
+  background: var(--background-color);
+  color: var(--agi-blue-200);
+  font: inherit;
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.popup-simulation-devices button[aria-pressed="true"] {
+  background: var(--agi-blue-200);
+  color: #fff;
+}
+
+.popup-simulation-devices button:focus-visible {
+  outline: 2px solid var(--agi-blue-200);
+  outline-offset: -4px;
+}
+
+.popup-simulation-stage {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 560px;
+  margin: 0 auto;
+  border: 1px solid var(--agi-grey-100);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  background: var(--light-color);
+  overflow: hidden;
+}
+
+.popup-simulation-stage[data-device="mobile"] {
+  max-width: 390px;
+  height: 760px;
+  min-height: 0;
+  border-width: 10px;
+  border-color: var(--agi-navy);
+  border-radius: 36px;
+  padding: 0;
+}
+
+/* page skeleton + overlay behind the popup */
+.popup-simulation-page {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 0 0 24px;
+}
+
+.popup-simulation-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 15 68 / 60%);
+}
+
+.popup-simulation-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  height: 56px;
+  padding: 0 24px;
+  background: var(--agi-blue-200);
+}
+
+.popup-simulation-header span {
+  width: 64px;
+  height: 12px;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 60%);
+}
+
+.popup-simulation-hero {
+  height: 200px;
+  margin: 0 24px;
+  border-radius: var(--panel-radius);
+  background: var(--agi-blue-100);
+}
+
+.popup-simulation-row {
+  display: flex;
+  gap: 16px;
+  margin: 0 24px;
+}
+
+.popup-simulation-row span {
+  flex: 1;
+  height: 120px;
+  border-radius: var(--card-radius);
+  background: #fff;
+}
+
+.popup-simulation-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: auto;
+  border-radius: var(--panel-radius);
+  box-shadow: 0 16px 48px rgb(0 15 68 / 30%);
+  overflow: hidden;
+}
+
+.popup-simulation-dialog.popup-promocional-dialog {
+  max-width: 880px;
+}
+
+.popup-simulation-stage[data-device="mobile"] .popup-simulation-dialog {
+  max-width: none;
+  max-height: calc(100% - 48px);
+  margin: auto 0 0;
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  overflow: auto;
+}
+
+.popup-simulation-rules {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.popup-simulation-rules > div {
+  border-radius: var(--card-radius);
+  padding: 12px 16px;
+  background: var(--light-color);
+}
+
+.popup-simulation-rules dt {
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.popup-simulation-rules dd {
+  margin: 4px 0 0;
+  font-size: var(--body-font-size-s);
+}
+
+.popup-simulation .popup-status {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-weight: 700;
+}
+
+.popup-simulation .popup-status-ativo {
+  background: var(--agi-green-200);
+  color: var(--agi-navy);
+}
+
+.popup-simulation .popup-status-inativo {
+  background: var(--agi-grey-100);
+  color: #3a3a3a;
+}
+
+.popup-simulation .popup-status-agendado {
+  background: var(--agi-blue-50);
+  color: var(--agi-blue-200);
+}
+
+.popup-simulation .popup-status-encerrado {
+  background: #ffe8e8;
+  color: #a30000;
+}
+
+.popup-simulation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0;
+  font-weight: 700;
+}

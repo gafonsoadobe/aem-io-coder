@@ -54,7 +54,11 @@
         "accordion-more",
         "columns-feature",
         "columns-banner",
-        "columns-dark"
+        "columns-dark",
+        "popup-promocional",
+        "popup-informativo",
+        "popup-engajamento",
+        "popup-manager"
       ]
     }
   ]

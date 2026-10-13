@@ -1,0 +1,56 @@
+{
+  "definitions": [
+    {
+      "title": "Popup Manager",
+      "id": "popup-manager",
+      "model": "popup-manager",
+      "filter": "popup-manager",
+      "plugins": {
+        "da": {
+          "name": "popup-manager",
+          "rows": 0,
+          "columns": 0
+        }
+      }
+    },
+    {
+      "title": "Popup",
+      "id": "popup-item",
+      "model": "popup-item",
+      "plugins": {
+        "da": {
+          "name": "popup-item",
+          "unsafeHTML": "<div><div></div></div>",
+          "fields": [
+            {
+              "name": "popup",
+              "selector": "div:nth-child(1)"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "popup-item",
+      "fields": [
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "popup",
+          "label": "Página do popup (em /popups/)",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "popup-manager",
+      "components": [
+        "popup-item"
+      ]
+    }
+  ]
+}
