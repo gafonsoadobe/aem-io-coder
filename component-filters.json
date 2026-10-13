@@ -61,7 +61,7 @@
   {
     "id": "popup-manager",
     "components": [
-      "popup-campanha"
+      "popup-item"
     ]
   }
 ]

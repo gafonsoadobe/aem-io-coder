@@ -7,7 +7,7 @@
       "plugins": {
         "da": {
           "name": "popup-engajamento",
-          "unsafeHTML": "<div class=\"popup-engajamento\"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+          "unsafeHTML": "<div class=\"popup-engajamento\"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>false</p></div></div><div><div><p>10</p></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>imediato</p></div></div><div><div><p>0</p></div></div><div><div><p>1</p></div></div><div><div><p>dia</p></div></div><div><div><p>24</p></div></div></div>",
           "fields": [
             {
               "name": "title",
@@ -28,6 +28,50 @@
             {
               "name": "form",
               "selector": "div:nth-child(5)>div"
+            },
+            {
+              "name": "active",
+              "selector": "div:nth-child(6)>div"
+            },
+            {
+              "name": "priority",
+              "selector": "div:nth-child(7)>div"
+            },
+            {
+              "name": "start",
+              "selector": "div:nth-child(8)>div"
+            },
+            {
+              "name": "end",
+              "selector": "div:nth-child(9)>div"
+            },
+            {
+              "name": "pages",
+              "selector": "div:nth-child(10)>div"
+            },
+            {
+              "name": "pageRules",
+              "selector": "div:nth-child(11)>div"
+            },
+            {
+              "name": "trigger",
+              "selector": "div:nth-child(12)>div"
+            },
+            {
+              "name": "triggerValue",
+              "selector": "div:nth-child(13)>div"
+            },
+            {
+              "name": "frequencyCap",
+              "selector": "div:nth-child(14)>div"
+            },
+            {
+              "name": "frequencyPeriod",
+              "selector": "div:nth-child(15)>div"
+            },
+            {
+              "name": "cooldownHours",
+              "selector": "div:nth-child(16)>div"
             }
           ]
         }
@@ -38,6 +82,11 @@
     {
       "id": "popup-engajamento",
       "fields": [
+        {
+          "component": "tab",
+          "name": "tabConteudo",
+          "label": "Conteúdo"
+        },
         {
           "component": "text",
           "valueType": "string",
@@ -56,19 +105,134 @@
           "component": "text",
           "valueType": "string",
           "name": "ctaLabel",
-          "label": "CTA – texto do botão"
+          "label": "Botão: texto"
         },
         {
           "component": "aem-content",
           "valueType": "string",
           "name": "ctaLink",
-          "label": "CTA – link"
+          "label": "Botão: link"
         },
         {
           "component": "aem-content",
           "valueType": "string",
           "name": "form",
-          "label": "Formulário (opcional, substitui o CTA) – ex.: /forms/abra-sua-conta.json"
+          "label": "Formulário (opcional, substitui o botão): ex. /forms/abra-sua-conta.json"
+        },
+        {
+          "component": "tab",
+          "name": "tabExibicao",
+          "label": "Exibição"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "active",
+          "label": "Ativo",
+          "value": false
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "priority",
+          "label": "Prioridade (1 = mais alta)",
+          "value": 10
+        },
+        {
+          "component": "date-time",
+          "valueType": "date-time",
+          "name": "start",
+          "label": "Data inicial (vazio = imediatamente)"
+        },
+        {
+          "component": "date-time",
+          "valueType": "date-time",
+          "name": "end",
+          "label": "Data final (vazio = sem fim)"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "pages",
+          "label": "Páginas onde o popup aparece",
+          "multi": true
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "pageRules",
+          "label": "Regras de páginas (opcional): /secao/* = seção inteira, * = site todo, !/pagina = excluir"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "trigger",
+          "label": "Quando abrir (trigger)",
+          "value": "imediato",
+          "options": [
+            {
+              "name": "Imediatamente",
+              "value": "imediato"
+            },
+            {
+              "name": "Após um tempo",
+              "value": "tempo"
+            },
+            {
+              "name": "Ao rolar a página",
+              "value": "scroll"
+            }
+          ]
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "triggerValue",
+          "label": "Valor do trigger (segundos para tempo, % para rolagem)",
+          "value": 0
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "frequencyCap",
+          "label": "Frequency cap: máximo de exibições (0 = sem limite)",
+          "value": 1
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "frequencyPeriod",
+          "label": "Frequency cap: período",
+          "value": "dia",
+          "options": [
+            {
+              "name": "Por sessão",
+              "value": "sessao"
+            },
+            {
+              "name": "Por dia",
+              "value": "dia"
+            },
+            {
+              "name": "Por semana",
+              "value": "semana"
+            },
+            {
+              "name": "Por mês",
+              "value": "mes"
+            },
+            {
+              "name": "No total (por visitante)",
+              "value": "sempre"
+            }
+          ]
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "cooldownHours",
+          "label": "Cooldown: horas até poder exibir de novo (0 = sem cooldown)",
+          "value": 24
         }
       ]
     }

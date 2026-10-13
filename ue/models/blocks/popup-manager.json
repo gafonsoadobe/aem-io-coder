@@ -14,61 +14,17 @@
       }
     },
     {
-      "title": "Campanha de Popup",
-      "id": "popup-campanha",
-      "model": "popup-campanha",
+      "title": "Popup",
+      "id": "popup-item",
+      "model": "popup-item",
       "plugins": {
         "da": {
-          "name": "popup-campanha",
-          "unsafeHTML": "<div><div><p>Nova campanha</p></div><div></div><div><p>false</p></div><div><p>10</p></div><div></div><div></div><div><p>/</p></div><div><p>imediato</p></div><div><p>0</p></div><div><p>1</p></div><div><p>dia</p></div><div><p>24</p></div></div>",
+          "name": "popup-item",
+          "unsafeHTML": "<div><div></div></div>",
           "fields": [
             {
-              "name": "name",
-              "selector": "div:nth-child(1)"
-            },
-            {
               "name": "popup",
-              "selector": "div:nth-child(2)"
-            },
-            {
-              "name": "active",
-              "selector": "div:nth-child(3)"
-            },
-            {
-              "name": "priority",
-              "selector": "div:nth-child(4)"
-            },
-            {
-              "name": "start",
-              "selector": "div:nth-child(5)"
-            },
-            {
-              "name": "end",
-              "selector": "div:nth-child(6)"
-            },
-            {
-              "name": "pages",
-              "selector": "div:nth-child(7)"
-            },
-            {
-              "name": "trigger",
-              "selector": "div:nth-child(8)"
-            },
-            {
-              "name": "triggerValue",
-              "selector": "div:nth-child(9)"
-            },
-            {
-              "name": "frequencyCap",
-              "selector": "div:nth-child(10)"
-            },
-            {
-              "name": "frequencyPeriod",
-              "selector": "div:nth-child(11)"
-            },
-            {
-              "name": "cooldownHours",
-              "selector": "div:nth-child(12)"
+              "selector": "div:nth-child(1)"
             }
           ]
         }
@@ -77,125 +33,14 @@
   ],
   "models": [
     {
-      "id": "popup-campanha",
+      "id": "popup-item",
       "fields": [
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "name",
-          "label": "Nome da campanha",
-          "required": true
-        },
         {
           "component": "aem-content",
           "valueType": "string",
           "name": "popup",
-          "label": "Popup (página em /popups/)",
+          "label": "Página do popup (em /popups/)",
           "required": true
-        },
-        {
-          "component": "boolean",
-          "valueType": "boolean",
-          "name": "active",
-          "label": "Ativo",
-          "value": false
-        },
-        {
-          "component": "number",
-          "valueType": "number",
-          "name": "priority",
-          "label": "Prioridade (1 = mais alta)",
-          "value": 10
-        },
-        {
-          "component": "date-time",
-          "valueType": "date-time",
-          "name": "start",
-          "label": "Data inicial (vazio = imediatamente)"
-        },
-        {
-          "component": "date-time",
-          "valueType": "date-time",
-          "name": "end",
-          "label": "Data final (vazio = sem fim)"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "pages",
-          "label": "Páginas elegíveis (separadas por vírgula: /, /cartoes/*, *, !/excluir)",
-          "value": "/"
-        },
-        {
-          "component": "select",
-          "valueType": "string",
-          "name": "trigger",
-          "label": "Trigger",
-          "value": "imediato",
-          "options": [
-            {
-              "name": "Imediato",
-              "value": "imediato"
-            },
-            {
-              "name": "Após um tempo",
-              "value": "tempo"
-            },
-            {
-              "name": "Ao rolar a página",
-              "value": "scroll"
-            }
-          ]
-        },
-        {
-          "component": "number",
-          "valueType": "number",
-          "name": "triggerValue",
-          "label": "Valor do trigger (segundos para tempo, % para scroll)",
-          "value": 0
-        },
-        {
-          "component": "number",
-          "valueType": "number",
-          "name": "frequencyCap",
-          "label": "Frequency cap – máximo de exibições (0 = sem limite)",
-          "value": 1
-        },
-        {
-          "component": "select",
-          "valueType": "string",
-          "name": "frequencyPeriod",
-          "label": "Frequency cap – período",
-          "value": "dia",
-          "options": [
-            {
-              "name": "Por sessão",
-              "value": "sessao"
-            },
-            {
-              "name": "Por dia",
-              "value": "dia"
-            },
-            {
-              "name": "Por semana",
-              "value": "semana"
-            },
-            {
-              "name": "Por mês",
-              "value": "mes"
-            },
-            {
-              "name": "No total (por visitante)",
-              "value": "sempre"
-            }
-          ]
-        },
-        {
-          "component": "number",
-          "valueType": "number",
-          "name": "cooldownHours",
-          "label": "Cooldown – horas até poder exibir de novo (0 = sem cooldown)",
-          "value": 24
         }
       ]
     }
@@ -204,7 +49,7 @@
     {
       "id": "popup-manager",
       "components": [
-        "popup-campanha"
+        "popup-item"
       ]
     }
   ]

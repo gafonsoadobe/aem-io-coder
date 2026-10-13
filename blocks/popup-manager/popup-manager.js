@@ -1,51 +1,14 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
-import { readCampaignRow } from '../../scripts/popups/popup-config.js';
+import { fetchPopup, readManagerPaths } from '../../scripts/popups/popup-config.js';
 import {
-  byPriority, checkEligibility, getStatus, normalizeCampaign, normalizePath,
+  STATUS_LABELS, TYPE_LABELS, describeCooldown, describeFrequency, describePages,
+  describePeriod, describeTrigger, editUrl, previewUrl,
+} from '../../scripts/popups/popup-format.js';
+import {
+  byPriority, checkEligibility, getStatus, normalizePath,
 } from '../../scripts/popups/popup-rules.js';
 
-const STATUS = {
-  ativo: 'Ativo',
-  inativo: 'Inativo',
-  agendado: 'Agendado',
-  encerrado: 'Encerrado',
-};
-
-const TYPES = {
-  'popup-promocional': 'Promocional',
-  'popup-informativo': 'Informativo',
-  'popup-engajamento': 'Engajamento',
-};
-
-const PERIODS = {
-  sessao: 'sessão',
-  dia: 'dia',
-  semana: 'semana',
-  mes: 'mês',
-  sempre: 'visitante',
-};
-
-const COLUMNS = ['Prioridade', 'Campanha', 'Status', 'Período', 'Páginas', 'Trigger', 'Frequência', 'Cooldown', 'Na página simulada', 'Ações'];
-
-const dateFormat = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
-const formatDate = (time) => (time ? dateFormat.format(time) : '—');
-
-function describeTrigger({ trigger, triggerValue }) {
-  if (trigger === 'tempo') return `Após ${triggerValue || 0} s`;
-  if (trigger === 'scroll') return `Rolagem de ${triggerValue || 50}%`;
-  return 'Imediato';
-}
-
-function describeFrequency({ frequencyCap, frequencyPeriod }) {
-  if (!frequencyCap) return 'Sem limite';
-  return `${frequencyCap}× por ${PERIODS[frequencyPeriod]}`;
-}
-
-/** A page where the campaign can be previewed: its first non-wildcard page, or the home. */
-function previewPage(campaign) {
-  const page = campaign.pages.find((p) => !p.startsWith('!') && !p.includes('*'));
-  return page ? normalizePath(page) : '/';
-}
+const COLUMNS = ['Prioridade', 'Popup', 'Status', 'Período', 'Páginas', 'Trigger', 'Frequência', 'Cooldown', 'Na página simulada', 'Ações'];
 
 function cell(row, label, content, className) {
   const td = document.createElement('td');
@@ -57,20 +20,16 @@ function cell(row, label, content, className) {
   return td;
 }
 
-/** Reads type and title of each popup page, to show what each campaign displays. */
-async function loadPopupInfo(path) {
-  try {
-    const resp = await fetch(`${path}.plain.html`);
-    if (!resp.ok) return { error: 'popup não encontrado' };
-    const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
-    const type = Object.keys(TYPES).find((name) => doc.querySelector(`.${name}`));
-    if (!type) return { error: 'página sem bloco de popup' };
-    const fields = [...doc.querySelector(`.${type}`).children];
-    const titleRow = type === 'popup-promocional' ? fields[1] : fields[0];
-    return { type: TYPES[type], title: titleRow?.textContent.trim() };
-  } catch {
-    return { error: 'popup não encontrado' };
+function link(href, text, label) {
+  const a = document.createElement('a');
+  a.href = href;
+  a.textContent = text;
+  if (label) {
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.setAttribute('aria-label', label);
   }
+  return a;
 }
 
 function buildSummary(campaigns) {
@@ -81,31 +40,89 @@ function buildSummary(campaigns) {
     acc[status] = (acc[status] || 0) + 1;
     return acc;
   }, {});
-  summary.innerHTML = Object.entries(STATUS)
-    .map(([key, label]) => `<p class="popup-manager-count popup-status-${key}"><strong>${counts[key] || 0}</strong> ${label}${(counts[key] || 0) === 1 ? '' : 's'}</p>`)
-    .join('');
+  Object.entries(STATUS_LABELS).forEach(([key, label]) => {
+    const count = counts[key] || 0;
+    const p = document.createElement('p');
+    p.className = `popup-manager-count popup-status-${key}`;
+    p.innerHTML = `<strong>${count}</strong> ${label}${count === 1 ? '' : 's'}`;
+    summary.append(p);
+  });
   return summary;
 }
 
+/** Table row of a popup that could be read. */
+function buildRow(campaign, sourceRow) {
+  const tr = document.createElement('tr');
+  moveInstrumentation(sourceRow, tr);
+  const status = getStatus(campaign);
+  cell(tr, COLUMNS[0], String(campaign.priority), 'popup-manager-priority');
+
+  const name = document.createElement('div');
+  const title = document.createElement('strong');
+  title.textContent = campaign.name || 'Popup sem título';
+  const type = document.createElement('span');
+  type.className = 'popup-manager-type';
+  type.textContent = TYPE_LABELS[campaign.type];
+  name.append(title, link(campaign.popup, campaign.popup), type);
+  cell(tr, COLUMNS[1], name);
+
+  const badge = document.createElement('span');
+  badge.className = `popup-status popup-status-${status}`;
+  badge.textContent = STATUS_LABELS[status];
+  cell(tr, COLUMNS[2], badge);
+  cell(tr, COLUMNS[3], describePeriod(campaign));
+  cell(tr, COLUMNS[4], describePages(campaign));
+  cell(tr, COLUMNS[5], describeTrigger(campaign));
+  cell(tr, COLUMNS[6], describeFrequency(campaign));
+  cell(tr, COLUMNS[7], describeCooldown(campaign));
+  cell(tr, COLUMNS[8], '');
+
+  const actions = document.createElement('div');
+  actions.className = 'popup-manager-actions';
+  actions.append(link(campaign.popup, 'Ver simulação'));
+  actions.append(link(previewUrl(campaign), 'Testar', `Testar ${campaign.name} na página (abre em nova aba)`));
+  const edit = editUrl(campaign.popup);
+  if (edit) actions.append(link(edit, 'Editar', `Editar ${campaign.name} no Universal Editor (abre em nova aba)`));
+  cell(tr, COLUMNS[9], actions);
+  return tr;
+}
+
+/** Table row of a list entry without a readable popup, kept so it stays editable. */
+function buildErrorRow(path, error, sourceRow) {
+  const tr = document.createElement('tr');
+  moveInstrumentation(sourceRow, tr);
+  tr.className = 'popup-manager-error';
+  cell(tr, COLUMNS[0], '—');
+  cell(tr, COLUMNS[1], path ? `${path}: ⚠ ${error}` : '⚠ escolha a página do popup');
+  COLUMNS.slice(2).forEach((label) => cell(tr, label, ''));
+  return tr;
+}
+
 /**
- * Popup Manager dashboard: lists the campaigns authored in this block (one row
- * per campaign, edited in the Universal Editor) with their computed status and
- * a simulator showing which popup a new visitor would see on a page.
- * The same rows are read by the runtime (scripts/popups/popup-manager.js).
+ * Popup Manager dashboard. Each row of the block points to a popup page (chosen
+ * with the page picker in the Universal Editor); the content and the display
+ * settings of each popup are edited on its own page. The dashboard reads every
+ * popup and shows status, schedule and rules, with a simulator of which popup a
+ * new visitor would see on a page. The runtime (scripts/popups/popup-manager.js)
+ * reads the same list.
  * @param {Element} block The block element
  */
-export default function decorate(block) {
+export default async function decorate(block) {
   const rows = [...block.children];
-  // incomplete rows are listed too, so new campaigns stay selectable in the editor
-  const campaigns = rows.map((row, i) => normalizeCampaign(readCampaignRow(row), i));
-  const sorted = [...campaigns].sort(byPriority);
+  const paths = rows.map((row) => readManagerPaths({ children: [row] })[0] || '');
+  const results = await Promise.all(paths.map((path, i) => (path
+    ? fetchPopup(path, i)
+    : Promise.resolve({ popup: '', order: i, error: 'sem página' }))));
+  const campaigns = results.filter((r) => !r.error);
 
   const intro = document.createElement('div');
   intro.className = 'popup-manager-intro';
   intro.innerHTML = `
-    <p>Cada linha é uma campanha. No Universal Editor, selecione uma linha para ativar ou desativar,
-    mudar a prioridade (1 = mais alta), o período, as páginas, o trigger, a frequência e o cooldown.
-    Publique esta página para aplicar as mudanças no site: as páginas não precisam ser publicadas de novo.</p>`;
+    <p>Esta lista define quais popups fazem parte do site. Para incluir um popup, adicione um item
+    <strong>Popup</strong> e escolha a página dele. O conteúdo e as regras de exibição (ativo, prioridade,
+    período, páginas, trigger, frequência e cooldown) são editados na página de cada popup, nas abas
+    <strong>Conteúdo</strong> e <strong>Exibição</strong> do Universal Editor.</p>
+    <p>Mudanças entram no site quando o popup é publicado. As páginas onde ele aparece não precisam ser publicadas de novo.</p>`;
 
   const simulator = document.createElement('form');
   simulator.className = 'popup-manager-simulator';
@@ -117,66 +134,18 @@ export default function decorate(block) {
 
   const table = document.createElement('table');
   table.className = 'popup-manager-table';
-  table.innerHTML = `<caption>Campanhas de popup, ordenadas por prioridade</caption>
+  table.innerHTML = `<caption>Popups do site, ordenados por prioridade</caption>
     <thead><tr>${COLUMNS.map((c) => `<th scope="col">${c}</th>`).join('')}</tr></thead>`;
   const tbody = document.createElement('tbody');
-
-  const decisionCells = new Map();
+  const sorted = [...campaigns].sort(byPriority);
+  const decisions = new Map();
   sorted.forEach((campaign) => {
-    const tr = document.createElement('tr');
-    moveInstrumentation(rows[campaign.order], tr);
-    const status = getStatus(campaign);
-
-    cell(tr, COLUMNS[0], String(campaign.priority), 'popup-manager-priority');
-
-    const name = document.createElement('div');
-    const title = document.createElement('strong');
-    title.textContent = campaign.name || 'Campanha sem nome';
-    const type = document.createElement('span');
-    type.className = 'popup-manager-type';
-    name.append(title);
-    if (campaign.popup) {
-      const link = document.createElement('a');
-      link.href = campaign.popup;
-      link.textContent = campaign.popup;
-      name.append(link);
-      type.textContent = '…';
-      loadPopupInfo(campaign.popup).then((info) => {
-        type.textContent = info.error
-          ? `⚠ ${info.error}`
-          : `${info.type}: “${info.title || 'sem título'}”`;
-      });
-    } else {
-      type.textContent = '⚠ escolha a página do popup';
-    }
-    name.append(type);
-    cell(tr, COLUMNS[1], name);
-
-    const badge = document.createElement('span');
-    badge.className = `popup-status popup-status-${status}`;
-    badge.textContent = STATUS[status];
-    cell(tr, COLUMNS[2], badge);
-    cell(tr, COLUMNS[3], `${formatDate(campaign.start)} → ${formatDate(campaign.end)}`);
-    cell(tr, COLUMNS[4], campaign.pages.join(', '));
-    cell(tr, COLUMNS[5], describeTrigger(campaign));
-    cell(tr, COLUMNS[6], describeFrequency(campaign));
-    cell(tr, COLUMNS[7], campaign.cooldownHours ? `${campaign.cooldownHours} h` : '—');
-    decisionCells.set(campaign.order, cell(tr, COLUMNS[8], ''));
-
-    if (campaign.popup) {
-      const preview = document.createElement('a');
-      preview.href = `${previewPage(campaign)}?popup=${encodeURIComponent(campaign.id)}`;
-      preview.target = '_blank';
-      preview.rel = 'noopener';
-      preview.textContent = 'Pré-visualizar';
-      preview.setAttribute('aria-label', `Pré-visualizar ${campaign.name} (abre em nova aba)`);
-      cell(tr, COLUMNS[9], preview);
-    } else {
-      cell(tr, COLUMNS[9], '—');
-    }
-
+    const tr = buildRow(campaign, rows[campaign.order]);
+    decisions.set(campaign.order, tr.cells[8]);
     tbody.append(tr);
   });
+  results.filter((r) => r.error)
+    .forEach((r) => tbody.append(buildErrorRow(r.popup, r.error, rows[r.order])));
   table.append(tbody);
 
   // simulation of a first visit: no frequency or cooldown history
@@ -187,14 +156,11 @@ export default function decorate(block) {
     let winner = null;
     sorted.forEach((campaign) => {
       const { eligible, reason } = checkEligibility(campaign, ctx);
-      const td = decisionCells.get(campaign.order);
       const isWinner = eligible && !winner;
       if (isWinner) winner = campaign;
-      td.textContent = (() => {
-        if (isWinner) return '✔ Exibido';
-        if (eligible) return 'Elegível (prioridade menor)';
-        return `— ${reason}`;
-      })();
+      const td = decisions.get(campaign.order);
+      if (isWinner) td.textContent = '✔ Exibido';
+      else td.textContent = eligible ? 'Elegível (prioridade menor)' : `— ${reason}`;
       td.closest('tr').classList.toggle('popup-manager-winner', isWinner);
     });
     simulator.querySelector('.popup-manager-result').textContent = winner
@@ -209,10 +175,10 @@ export default function decorate(block) {
 
   const wrapper = document.createElement('div');
   wrapper.className = 'popup-manager-table-wrapper';
-  wrapper.append(table);
-
-  if (!campaigns.length) {
-    wrapper.innerHTML = '<p>Nenhuma campanha cadastrada. Adicione uma campanha a este bloco no Universal Editor.</p>';
+  if (rows.length) {
+    wrapper.append(table);
+  } else {
+    wrapper.innerHTML = '<p>Nenhum popup na lista. Adicione um item <strong>Popup</strong> a este bloco no Universal Editor.</p>';
   }
 
   block.replaceChildren(intro, buildSummary(campaigns), simulator, wrapper);

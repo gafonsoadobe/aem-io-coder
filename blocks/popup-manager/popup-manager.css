@@ -192,3 +192,18 @@
     content: none;
   }
 }
+
+.popup-manager .popup-manager-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.popup-manager .popup-manager-actions a {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+.popup-manager tr.popup-manager-error {
+  color: #a30000;
+}

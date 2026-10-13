@@ -1,9 +1,10 @@
 /* popup-promocional: image + title, text and CTA. Card on its page, content of the dialog when shown. */
-.popup-promocional {
+
+/* standalone card (outside the popup shell and the simulation) */
+.popup-promocional:not(.popup-simulated) {
   max-width: 880px;
   margin: 0 auto;
   border-radius: var(--panel-radius);
-  background: var(--background-color);
   box-shadow: 0 8px 32px rgb(0 15 68 / 15%);
   overflow: hidden;
 }
@@ -11,6 +12,7 @@
 .popup-promocional .popup-card {
   display: flex;
   flex-direction: column;
+  background: var(--background-color);
 }
 
 .popup-promocional .popup-media {
@@ -47,7 +49,7 @@
   margin: 24px 0 0;
 }
 
-@media (width >= 600px) {
+@container popup (width >= 600px) {
   .popup-promocional .popup-card {
     flex-direction: row;
     align-items: stretch;

@@ -2,14 +2,18 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   checkEligibility, countImpressions, getStatus, matchesPages, normalizeCampaign,
-  normalizePath, parseDate, selectCampaign,
+  normalizePath, parseDate, selectCampaign, toId,
 } from '../../scripts/popups/popup-rules.js';
 
 const NOW = new Date(2026, 9, 13, 12, 0).getTime();
 const HOUR = 3600e3;
 
 const campaign = (raw, order = 0) => normalizeCampaign({
-  name: 'Teste', popup: '/popups/teste', active: 'true', ...raw,
+  name: 'Teste',
+  popup: `/popups/${toId(raw.name || 'teste')}`,
+  active: 'true',
+  pages: ['/'],
+  ...raw,
 }, order);
 
 const ctx = (extra = {}) => ({
@@ -47,6 +51,16 @@ describe('pages', () => {
 });
 
 describe('normalizeCampaign', () => {
+  it('uses the popup page name as id', () => {
+    assert.equal(toId('/popups/Teste-Cartões'), 'teste-cartoes');
+    assert.equal(campaign({ name: 'Outro nome', popup: '/popups/promo-x' }).id, 'promo-x');
+  });
+  it('combines picked pages and page rules', () => {
+    const c = campaign({ pages: ['/cartoes', '/pix'], pageRules: '/fale-conosco/*, !/pix' });
+    assert.deepEqual(c.pages, ['/cartoes', '/pix', '/fale-conosco/*', '!/pix']);
+    assert.ok(matchesPages(c.pages, '/fale-conosco/seguranca'));
+    assert.ok(!matchesPages(c.pages, '/pix'));
+  });
   it('applies defaults and authored values', () => {
     const c = campaign({
       priority: '2', trigger: 'Scroll', triggerValue: '40', pages: '/, /pix', frequencyPeriod: 'Sessão',
@@ -72,6 +86,10 @@ describe('eligibility', () => {
     assert.equal(getStatus(campaign({ start: '14/10/2026' }), NOW), 'agendado');
     assert.equal(getStatus(campaign({ end: '12/10/2026' }), NOW), 'encerrado');
     assert.equal(getStatus(campaign({ start: '13/10/2026', end: '13/10/2026' }), NOW), 'ativo');
+  });
+  it('needs at least one page', () => {
+    const result = checkEligibility(campaign({ pages: [] }), ctx());
+    assert.deepEqual(result, { eligible: false, reason: 'nenhuma página escolhida' });
   });
   it('respects eligible pages', () => {
     const result = checkEligibility(campaign({ pages: '/cartoes' }), ctx());

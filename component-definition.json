@@ -277,7 +277,7 @@
           "plugins": {
             "da": {
               "name": "popup-engajamento",
-              "unsafeHTML": "<div class=\"popup-engajamento\"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+              "unsafeHTML": "<div class=\"popup-engajamento\"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>false</p></div></div><div><div><p>10</p></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>imediato</p></div></div><div><div><p>0</p></div></div><div><div><p>1</p></div></div><div><div><p>dia</p></div></div><div><div><p>24</p></div></div></div>",
               "fields": [
                 {
                   "name": "title",
@@ -298,6 +298,50 @@
                 {
                   "name": "form",
                   "selector": "div:nth-child(5)>div"
+                },
+                {
+                  "name": "active",
+                  "selector": "div:nth-child(6)>div"
+                },
+                {
+                  "name": "priority",
+                  "selector": "div:nth-child(7)>div"
+                },
+                {
+                  "name": "start",
+                  "selector": "div:nth-child(8)>div"
+                },
+                {
+                  "name": "end",
+                  "selector": "div:nth-child(9)>div"
+                },
+                {
+                  "name": "pages",
+                  "selector": "div:nth-child(10)>div"
+                },
+                {
+                  "name": "pageRules",
+                  "selector": "div:nth-child(11)>div"
+                },
+                {
+                  "name": "trigger",
+                  "selector": "div:nth-child(12)>div"
+                },
+                {
+                  "name": "triggerValue",
+                  "selector": "div:nth-child(13)>div"
+                },
+                {
+                  "name": "frequencyCap",
+                  "selector": "div:nth-child(14)>div"
+                },
+                {
+                  "name": "frequencyPeriod",
+                  "selector": "div:nth-child(15)>div"
+                },
+                {
+                  "name": "cooldownHours",
+                  "selector": "div:nth-child(16)>div"
                 }
               ]
             }
@@ -310,7 +354,7 @@
           "plugins": {
             "da": {
               "name": "popup-informativo",
-              "unsafeHTML": "<div class=\"popup-informativo\"><div><div></div></div><div><div></div></div><div><div><p>info</p></div></div><div><div></div></div><div><div></div></div></div>",
+              "unsafeHTML": "<div class=\"popup-informativo\"><div><div></div></div><div><div></div></div><div><div><p>info</p></div></div><div><div></div></div><div><div></div></div><div><div><p>false</p></div></div><div><div><p>10</p></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>imediato</p></div></div><div><div><p>0</p></div></div><div><div><p>1</p></div></div><div><div><p>dia</p></div></div><div><div><p>24</p></div></div></div>",
               "fields": [
                 {
                   "name": "title",
@@ -331,6 +375,50 @@
                 {
                   "name": "ctaLink",
                   "selector": "div:nth-child(5)>div"
+                },
+                {
+                  "name": "active",
+                  "selector": "div:nth-child(6)>div"
+                },
+                {
+                  "name": "priority",
+                  "selector": "div:nth-child(7)>div"
+                },
+                {
+                  "name": "start",
+                  "selector": "div:nth-child(8)>div"
+                },
+                {
+                  "name": "end",
+                  "selector": "div:nth-child(9)>div"
+                },
+                {
+                  "name": "pages",
+                  "selector": "div:nth-child(10)>div"
+                },
+                {
+                  "name": "pageRules",
+                  "selector": "div:nth-child(11)>div"
+                },
+                {
+                  "name": "trigger",
+                  "selector": "div:nth-child(12)>div"
+                },
+                {
+                  "name": "triggerValue",
+                  "selector": "div:nth-child(13)>div"
+                },
+                {
+                  "name": "frequencyCap",
+                  "selector": "div:nth-child(14)>div"
+                },
+                {
+                  "name": "frequencyPeriod",
+                  "selector": "div:nth-child(15)>div"
+                },
+                {
+                  "name": "cooldownHours",
+                  "selector": "div:nth-child(16)>div"
                 }
               ]
             }
@@ -350,61 +438,17 @@
           }
         },
         {
-          "title": "Campanha de Popup",
-          "id": "popup-campanha",
-          "model": "popup-campanha",
+          "title": "Popup",
+          "id": "popup-item",
+          "model": "popup-item",
           "plugins": {
             "da": {
-              "name": "popup-campanha",
-              "unsafeHTML": "<div><div><p>Nova campanha</p></div><div></div><div><p>false</p></div><div><p>10</p></div><div></div><div></div><div><p>/</p></div><div><p>imediato</p></div><div><p>0</p></div><div><p>1</p></div><div><p>dia</p></div><div><p>24</p></div></div>",
+              "name": "popup-item",
+              "unsafeHTML": "<div><div></div></div>",
               "fields": [
                 {
-                  "name": "name",
-                  "selector": "div:nth-child(1)"
-                },
-                {
                   "name": "popup",
-                  "selector": "div:nth-child(2)"
-                },
-                {
-                  "name": "active",
-                  "selector": "div:nth-child(3)"
-                },
-                {
-                  "name": "priority",
-                  "selector": "div:nth-child(4)"
-                },
-                {
-                  "name": "start",
-                  "selector": "div:nth-child(5)"
-                },
-                {
-                  "name": "end",
-                  "selector": "div:nth-child(6)"
-                },
-                {
-                  "name": "pages",
-                  "selector": "div:nth-child(7)"
-                },
-                {
-                  "name": "trigger",
-                  "selector": "div:nth-child(8)"
-                },
-                {
-                  "name": "triggerValue",
-                  "selector": "div:nth-child(9)"
-                },
-                {
-                  "name": "frequencyCap",
-                  "selector": "div:nth-child(10)"
-                },
-                {
-                  "name": "frequencyPeriod",
-                  "selector": "div:nth-child(11)"
-                },
-                {
-                  "name": "cooldownHours",
-                  "selector": "div:nth-child(12)"
+                  "selector": "div:nth-child(1)"
                 }
               ]
             }
@@ -417,7 +461,7 @@
           "plugins": {
             "da": {
               "name": "popup-promocional",
-              "unsafeHTML": "<div class=\"popup-promocional\"><div><div><picture><img loading=\"lazy\"></picture></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>",
+              "unsafeHTML": "<div class=\"popup-promocional\"><div><div><picture><img loading=\"lazy\"></picture></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>false</p></div></div><div><div><p>10</p></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>imediato</p></div></div><div><div><p>0</p></div></div><div><div><p>1</p></div></div><div><div><p>dia</p></div></div><div><div><p>24</p></div></div></div>",
               "fields": [
                 {
                   "name": "image",
@@ -442,6 +486,50 @@
                 {
                   "name": "ctaLink",
                   "selector": "div:nth-child(5)>div"
+                },
+                {
+                  "name": "active",
+                  "selector": "div:nth-child(6)>div"
+                },
+                {
+                  "name": "priority",
+                  "selector": "div:nth-child(7)>div"
+                },
+                {
+                  "name": "start",
+                  "selector": "div:nth-child(8)>div"
+                },
+                {
+                  "name": "end",
+                  "selector": "div:nth-child(9)>div"
+                },
+                {
+                  "name": "pages",
+                  "selector": "div:nth-child(10)>div"
+                },
+                {
+                  "name": "pageRules",
+                  "selector": "div:nth-child(11)>div"
+                },
+                {
+                  "name": "trigger",
+                  "selector": "div:nth-child(12)>div"
+                },
+                {
+                  "name": "triggerValue",
+                  "selector": "div:nth-child(13)>div"
+                },
+                {
+                  "name": "frequencyCap",
+                  "selector": "div:nth-child(14)>div"
+                },
+                {
+                  "name": "frequencyPeriod",
+                  "selector": "div:nth-child(15)>div"
+                },
+                {
+                  "name": "cooldownHours",
+                  "selector": "div:nth-child(16)>div"
                 }
               ]
             }

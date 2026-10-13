@@ -21,7 +21,6 @@ export const CAP_PERIODS = {
 const DEFAULTS = {
   active: false,
   priority: 99,
-  pages: ['/'],
   trigger: 'imediato',
   triggerValue: 0,
   frequencyCap: 0,
@@ -76,29 +75,44 @@ export function normalizePath(path) {
   return p || '/';
 }
 
+/** Slug used as campaign id: the popup page name (e.g. /popups/teste-cartoes -> teste-cartoes). */
+export function toId(value) {
+  const slug = String(value || '').split('/').filter(Boolean).pop() || '';
+  return slug.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/** Page list from authored values: arrays, or text split by line breaks, commas or semicolons. */
+function toPages(...values) {
+  return values.flat()
+    .flatMap((value) => String(value ?? '').split(/[\n,;]+/))
+    .map((p) => p.trim())
+    .filter(Boolean);
+}
+
 /**
- * Builds a campaign from authored values, applying defaults.
- * @param {object} raw authored values (strings)
+ * Builds a campaign from the authored values of a popup, applying defaults.
+ * @param {object} raw authored values (strings; pages may be an array)
  * @param {number} order position in the Popup Manager (tie breaker)
  */
 export function normalizeCampaign(raw, order = 0) {
-  const name = String(raw.name || '').trim();
   const popup = String(raw.popup || '').trim();
+  const name = String(raw.name || '').trim();
   const trigger = toKey(raw.trigger);
   const period = toKey(raw.frequencyPeriod);
-  const pages = String(raw.pages ?? '').split(/[\n,;]+/).map((p) => p.trim()).filter(Boolean);
-  const id = (name || popup).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
   return {
-    id,
+    id: toId(popup || name),
     name: name || popup,
+    type: raw.type || '',
     popup: popup ? normalizePath(popup) : '',
     active: toBoolean(raw.active),
     priority: toNumber(raw.priority, DEFAULTS.priority),
     start: parseDate(raw.start),
     end: parseDate(raw.end, true),
-    pages: pages.length ? pages : DEFAULTS.pages,
+    pages: toPages(raw.pages, raw.pageRules),
     trigger: TRIGGERS.includes(trigger) ? trigger : DEFAULTS.trigger,
     triggerValue: Math.max(0, toNumber(raw.triggerValue, DEFAULTS.triggerValue)),
     frequencyCap: Math.max(0, Math.floor(toNumber(raw.frequencyCap, DEFAULTS.frequencyCap))),
@@ -164,6 +178,7 @@ export function checkEligibility(campaign, ctx) {
   if (!campaign.popup) return { eligible: false, reason: 'sem popup' };
   const status = getStatus(campaign, now);
   if (status !== 'ativo') return { eligible: false, reason: status };
+  if (!campaign.pages.length) return { eligible: false, reason: 'nenhuma página escolhida' };
   if (!matchesPages(campaign.pages, ctx.path)) return { eligible: false, reason: 'página não elegível' };
 
   const history = ctx.history?.[campaign.id] || {};

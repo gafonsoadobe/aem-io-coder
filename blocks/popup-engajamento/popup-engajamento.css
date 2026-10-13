@@ -1,11 +1,17 @@
 /* popup-engajamento: brand green panel with title, text and CTA or a simple form */
-.popup-engajamento {
+
+/* standalone card (outside the popup shell and the simulation) */
+.popup-engajamento:not(.popup-simulated) {
   max-width: 560px;
   margin: 0 auto;
   border-radius: var(--panel-radius);
+  box-shadow: 0 8px 32px rgb(0 15 68 / 15%);
+  overflow: hidden;
+}
+
+.popup-engajamento .popup-card {
   background: var(--agi-green-100);
   color: var(--agi-navy);
-  box-shadow: 0 8px 32px rgb(0 15 68 / 15%);
 }
 
 .popup-engajamento .popup-body {
@@ -42,7 +48,7 @@
   margin: 0;
 }
 
-@media (width >= 600px) {
+@container popup (width >= 480px) {
   .popup-engajamento .popup-body {
     padding: 40px;
   }

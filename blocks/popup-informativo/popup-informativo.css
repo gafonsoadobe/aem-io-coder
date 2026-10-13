@@ -3,13 +3,20 @@
   --popup-level-color: var(--agi-blue-100);
   --popup-level-bg: var(--agi-blue-50);
   --popup-level-text: var(--agi-blue-200);
+}
 
+/* standalone card (outside the popup shell and the simulation) */
+.popup-informativo:not(.popup-simulated) {
   max-width: 560px;
   margin: 0 auto;
-  border-top: 6px solid var(--popup-level-color);
   border-radius: var(--panel-radius);
-  background: var(--background-color);
   box-shadow: 0 8px 32px rgb(0 15 68 / 15%);
+  overflow: hidden;
+}
+
+.popup-informativo .popup-card {
+  border-top: 6px solid var(--popup-level-color);
+  background: var(--background-color);
 }
 
 .popup-informativo.popup-informativo-aviso {
@@ -87,7 +94,7 @@
   margin: 20px 0 0;
 }
 
-@media (width >= 600px) {
+@container popup (width >= 480px) {
   .popup-informativo .popup-body {
     padding: 36px 40px 32px;
   }
