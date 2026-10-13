@@ -41,7 +41,8 @@ export function buildMedia(cell) {
   const media = document.createElement('div');
   media.className = 'popup-media';
   if (isLocalImage(img.src)) {
-    const picture = createOptimizedPicture(img.src, img.alt, false, [
+    // eager: the popup is built before its trigger fires, so the image is ready when shown
+    const picture = createOptimizedPicture(img.src, img.alt, true, [
       { media: '(min-width: 600px)', width: '900' }, { width: '750' },
     ]);
     moveImageInstrumentation(img, picture);
