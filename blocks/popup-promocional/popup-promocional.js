@@ -8,9 +8,9 @@ import {
  * Shown by the Popup Manager (scripts/popups/popup-manager.js).
  * @param {Element} block The block element
  */
-export default function decorate(block) {
+export default async function decorate(block) {
   const [image, title, text, ctaLabel, ctaLink] = getFields(block);
-  renderPopup(block, {
+  await renderPopup(block, {
     media: buildMedia(image),
     parts: [buildTitle(title), buildText(text), buildCta(ctaLabel, ctaLink)],
   });

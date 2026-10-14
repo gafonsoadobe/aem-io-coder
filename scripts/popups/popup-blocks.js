@@ -194,8 +194,9 @@ function buildActions(campaign) {
  * @param {Element} card decorated popup card
  * @param {object} campaign settings read from the block
  */
-function buildSimulation(block, card, campaign) {
-  loadCSS(`${window.hlx.codeBasePath}/styles/popups.css`);
+async function buildSimulation(block, card, campaign) {
+  // styles first, so the simulation doesn't shift the page while it renders
+  await loadCSS(`${window.hlx.codeBasePath}/styles/popups.css`);
   const type = TYPE_LABELS[campaign.type] || 'Popup';
 
   const simulation = document.createElement('div');
@@ -238,11 +239,12 @@ function buildSimulation(block, card, campaign) {
  * decorated off-document, as fragments).
  * @param {Element} block popup block
  * @param {{media?: Element, parts: (Element|null)[]}} content
+ * @returns {Promise<void>}
  */
-export function renderPopup(block, content) {
+export async function renderPopup(block, content) {
   const onPage = block.isConnected;
   const campaign = onPage ? parsePopupBlock(block, normalizePath(window.location.pathname)) : null;
   const card = buildCard(content);
-  if (onPage) buildSimulation(block, card, campaign);
+  if (onPage) await buildSimulation(block, card, campaign);
   else block.replaceChildren(card);
 }
