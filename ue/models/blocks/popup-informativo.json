@@ -7,73 +7,7 @@
       "plugins": {
         "da": {
           "name": "popup-informativo",
-          "unsafeHTML": "<div class=\"popup-informativo\"><div><div></div></div><div><div></div></div><div><div><p>info</p></div></div><div><div></div></div><div><div></div></div><div><div><p>false</p></div></div><div><div><p>10</p></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div><p>imediato</p></div></div><div><div><p>0</p></div></div><div><div><p>1</p></div></div><div><div><p>dia</p></div></div><div><div><p>24</p></div></div></div>",
-          "fields": [
-            {
-              "name": "title",
-              "selector": "div:nth-child(1)>div"
-            },
-            {
-              "name": "message",
-              "selector": "div:nth-child(2)>div"
-            },
-            {
-              "name": "level",
-              "selector": "div:nth-child(3)>div"
-            },
-            {
-              "name": "ctaLabel",
-              "selector": "div:nth-child(4)>div"
-            },
-            {
-              "name": "ctaLink",
-              "selector": "div:nth-child(5)>div"
-            },
-            {
-              "name": "active",
-              "selector": "div:nth-child(6)>div"
-            },
-            {
-              "name": "priority",
-              "selector": "div:nth-child(7)>div"
-            },
-            {
-              "name": "start",
-              "selector": "div:nth-child(8)>div"
-            },
-            {
-              "name": "end",
-              "selector": "div:nth-child(9)>div"
-            },
-            {
-              "name": "pages",
-              "selector": "div:nth-child(10)>div"
-            },
-            {
-              "name": "pageRules",
-              "selector": "div:nth-child(11)>div"
-            },
-            {
-              "name": "trigger",
-              "selector": "div:nth-child(12)>div"
-            },
-            {
-              "name": "triggerValue",
-              "selector": "div:nth-child(13)>div"
-            },
-            {
-              "name": "frequencyCap",
-              "selector": "div:nth-child(14)>div"
-            },
-            {
-              "name": "frequencyPeriod",
-              "selector": "div:nth-child(15)>div"
-            },
-            {
-              "name": "cooldownHours",
-              "selector": "div:nth-child(16)>div"
-            }
-          ]
+          "type": "key-value-block"
         }
       }
     }

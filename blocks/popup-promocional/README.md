@@ -4,33 +4,33 @@
 
 ## Conteúdo (aba "Conteúdo" no Universal Editor)
 
-Um campo por linha, nesta ordem:
+O bloco é uma tabela **chave | valor**, gravada pelo Universal Editor a partir do painel de propriedades. Campos de conteúdo:
 
-| Linha | Campo | Obrigatório |
+| Campo | Descrição | Obrigatório |
 |---|---|---|
-| 1 | Imagem (com texto alternativo) | não |
-| 2 | Título | sim |
-| 3 | Texto (rich text) | não |
-| 4 | CTA – texto do botão | não |
-| 5 | CTA – link | não (o botão só aparece com texto e link) |
+| `image` | Imagem (com texto alternativo) | não |
+| `title` | Título | sim |
+| `text` | Texto (rich text) | não |
+| `ctaLabel` | CTA – texto do botão | não |
+| `ctaLink` | CTA – link | não (o botão só aparece com texto e link) |
 
 ## Exibição (aba "Exibição" no Universal Editor)
 
-Depois dos 5 campos de conteúdo vêm, uma linha cada, as regras de exibição. Elas são as mesmas nos 3 tipos de popup:
+As regras de exibição são as mesmas nos 3 tipos de popup:
 
-| Linha | Campo | Valores |
+| Campo | Descrição | Valores |
 |---|---|---|
-| 6 | Ativo | `true` / `false` |
-| 7 | Prioridade | número, 1 = mais alta |
-| 8 | Data inicial | vazio = já começa |
-| 9 | Data final | vazio = sem fim (data sem hora vale até 23:59) |
-| 10 | Páginas onde o popup aparece | seletor de páginas (uma ou mais) |
-| 11 | Regras de páginas (opcional) | `/secao/*`, `*` (site todo), `!/pagina` (excluir) |
-| 12 | Trigger | `imediato`, `tempo` ou `scroll` |
-| 13 | Valor do trigger | segundos (tempo) ou % (scroll) |
-| 14 | Frequency cap | máximo de exibições (0 = sem limite) |
-| 15 | Período do cap | `sessao`, `dia`, `semana`, `mes`, `sempre` |
-| 16 | Cooldown | horas (0 = sem cooldown) |
+| `active` | Ativo | `true` / `false` |
+| `priority` | Prioridade | número, 1 = mais alta |
+| `start` | Data inicial | vazio = já começa |
+| `end` | Data final | vazio = sem fim (data sem hora vale até 23:59) |
+| `pages` | Páginas onde o popup aparece | seletor de páginas (uma ou mais) |
+| `pageRules` | Regras de páginas (opcional) | `/secao/*`, `*` (site todo), `!/pagina` (excluir) |
+| `trigger` | Trigger | `imediato`, `tempo` ou `scroll` |
+| `triggerValue` | Valor do trigger | segundos (tempo) ou % (scroll) |
+| `frequencyCap` | Frequency cap | máximo de exibições (0 = sem limite) |
+| `frequencyPeriod` | Período do cap | `sessao`, `dia`, `semana`, `mes`, `sempre` |
+| `cooldownHours` | Cooldown | horas (0 = sem cooldown) |
 
 ## Simulação
 

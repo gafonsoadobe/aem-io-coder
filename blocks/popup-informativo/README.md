@@ -4,37 +4,37 @@
 
 ## Conteúdo (aba "Conteúdo" no Universal Editor)
 
-Um campo por linha, nesta ordem:
+O bloco é uma tabela **chave | valor**, gravada pelo Universal Editor a partir do painel de propriedades. Campos de conteúdo:
 
-| Linha | Campo | Obrigatório |
+| Campo | Descrição | Obrigatório |
 |---|---|---|
-| 1 | Título | sim |
-| 2 | Mensagem (rich text) | sim |
-| 3 | Nível: `info`, `aviso` ou `critico` | não (padrão `info`) |
-| 4 | CTA – texto do botão | não |
-| 5 | CTA – link | não |
+| `title` | Título | sim |
+| `message` | Mensagem (rich text) | sim |
+| `level` | Nível: `info`, `aviso` ou `critico` | não (padrão `info`) |
+| `ctaLabel` | CTA – texto do botão | não |
+| `ctaLink` | CTA – link | não |
 
 O nível define a cor e o selo visível ("Informação", "Atenção", "Importante"), para que a informação não dependa só da cor. No nível `critico`, o diálogo usa `role="alertdialog"`.
 
-Este nível é só visual. A **prioridade de exibição** entre campanhas é definida no Popup Manager.
+Este nível é só visual. A **prioridade de exibição** entre popups é o campo `priority`, na aba Exibição.
 
 ## Exibição (aba "Exibição" no Universal Editor)
 
-Depois dos 5 campos de conteúdo vêm, uma linha cada, as regras de exibição. Elas são as mesmas nos 3 tipos de popup:
+As regras de exibição são as mesmas nos 3 tipos de popup:
 
-| Linha | Campo | Valores |
+| Campo | Descrição | Valores |
 |---|---|---|
-| 6 | Ativo | `true` / `false` |
-| 7 | Prioridade | número, 1 = mais alta |
-| 8 | Data inicial | vazio = já começa |
-| 9 | Data final | vazio = sem fim (data sem hora vale até 23:59) |
-| 10 | Páginas onde o popup aparece | seletor de páginas (uma ou mais) |
-| 11 | Regras de páginas (opcional) | `/secao/*`, `*` (site todo), `!/pagina` (excluir) |
-| 12 | Trigger | `imediato`, `tempo` ou `scroll` |
-| 13 | Valor do trigger | segundos (tempo) ou % (scroll) |
-| 14 | Frequency cap | máximo de exibições (0 = sem limite) |
-| 15 | Período do cap | `sessao`, `dia`, `semana`, `mes`, `sempre` |
-| 16 | Cooldown | horas (0 = sem cooldown) |
+| `active` | Ativo | `true` / `false` |
+| `priority` | Prioridade | número, 1 = mais alta |
+| `start` | Data inicial | vazio = já começa |
+| `end` | Data final | vazio = sem fim (data sem hora vale até 23:59) |
+| `pages` | Páginas onde o popup aparece | seletor de páginas (uma ou mais) |
+| `pageRules` | Regras de páginas (opcional) | `/secao/*`, `*` (site todo), `!/pagina` (excluir) |
+| `trigger` | Trigger | `imediato`, `tempo` ou `scroll` |
+| `triggerValue` | Valor do trigger | segundos (tempo) ou % (scroll) |
+| `frequencyCap` | Frequency cap | máximo de exibições (0 = sem limite) |
+| `frequencyPeriod` | Período do cap | `sessao`, `dia`, `semana`, `mes`, `sempre` |
+| `cooldownHours` | Cooldown | horas (0 = sem cooldown) |
 
 ## Simulação
 
