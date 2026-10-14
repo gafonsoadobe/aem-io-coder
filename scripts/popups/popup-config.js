@@ -1,8 +1,8 @@
 /**
  * Popup configuration.
- * Each popup is a page under /popups/ with one popup block. The block holds the
- * content fields followed by the display settings (both edited in the Universal
- * Editor, in the "Conteúdo" and "Exibição" tabs). The Popup Manager page
+ * Each popup is a page under /popups/ with one popup block, a key-value table
+ * with the content fields and the display settings (edited in the properties
+ * panel of the Universal Editor, in the "Conteúdo" and "Exibição" tabs). The Popup Manager page
  * (/popups/manager) lists which popup pages are part of the site.
  * All of it is delivered by the edge (CDN): publishing a popup or the Popup
  * Manager updates the campaigns without touching the pages that show them.
@@ -13,10 +13,14 @@ export const MANAGER_PATH = '/popups/manager';
 
 export const POPUP_TYPES = ['popup-promocional', 'popup-informativo', 'popup-engajamento'];
 
-/** Content rows at the top of every popup block (see ue/models/blocks/popup-*.json). */
-export const CONTENT_ROWS = 5;
+/** Content fields of each popup type (see ue/models/blocks/popup-*.json). */
+export const CONTENT_FIELDS = {
+  'popup-promocional': ['image', 'title', 'text', 'ctaLabel', 'ctaLink'],
+  'popup-informativo': ['title', 'message', 'level', 'ctaLabel', 'ctaLink'],
+  'popup-engajamento': ['title', 'text', 'ctaLabel', 'ctaLink', 'form'],
+};
 
-/** Display settings rows, after the content rows, in this order. */
+/** Display settings, common to all popup types. */
 export const SETTINGS_FIELDS = [
   'active',
   'priority',
@@ -30,9 +34,6 @@ export const SETTINGS_FIELDS = [
   'frequencyPeriod',
   'cooldownHours',
 ];
-
-/** Row holding the popup title, per type. */
-const TITLE_ROW = { 'popup-promocional': 1 };
 
 const toPathname = (href) => {
   try {
@@ -56,13 +57,37 @@ export function readValues(cell) {
 
 const readValue = (cell) => readValues(cell)[0] || '';
 
-/** The single cell of each field row. */
-export const getFieldCells = (block) => [...block.children]
-  .map((row) => row.firstElementChild || row);
-
 export const findPopupBlock = (root) => root.querySelector(POPUP_TYPES.map((t) => `.${t}`).join(','));
 
 export const getPopupType = (block) => POPUP_TYPES.find((type) => block.classList.contains(type));
+
+const normalizeKey = (key) => String(key || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/**
+ * Value cells of a popup block, by field name. Popup blocks are key-value tables
+ * (field name | value), the format the Universal Editor reads and writes for
+ * them. The earlier layout (one value per row, in model order) is still read.
+ * @param {Element} block popup block
+ * @returns {Object<string, Element>}
+ */
+export function getFieldMap(block) {
+  const names = [...(CONTENT_FIELDS[getPopupType(block)] || []), ...SETTINGS_FIELDS];
+  const byKey = new Map(names.map((name) => [normalizeKey(name), name]));
+  const rows = [...block.children];
+  const isKeyValue = rows.some((row) => row.children.length === 2
+    && byKey.has(normalizeKey(row.firstElementChild.textContent)));
+  const fields = {};
+  rows.forEach((row, i) => {
+    if (isKeyValue) {
+      const [key, value] = row.children;
+      const name = byKey.get(normalizeKey(key?.textContent));
+      if (name && value) fields[name] = value;
+    } else if (names[i]) {
+      fields[names[i]] = row.firstElementChild || row;
+    }
+  });
+  return fields;
+}
 
 /**
  * Reads the campaign (settings, title and type) of an undecorated popup block.
@@ -71,17 +96,16 @@ export const getPopupType = (block) => POPUP_TYPES.find((type) => block.classLis
  * @param {number} order position in the Popup Manager
  */
 export function parsePopupBlock(block, path, order = 0) {
-  const type = getPopupType(block);
-  const cells = getFieldCells(block);
-  const settings = Object.fromEntries(SETTINGS_FIELDS.map((field, i) => {
-    const cell = cells[CONTENT_ROWS + i];
-    return [field, field === 'pages' ? readValues(cell) : readValue(cell)];
-  }));
+  const fields = getFieldMap(block);
+  const settings = Object.fromEntries(SETTINGS_FIELDS.map((field) => [
+    field,
+    field === 'pages' ? readValues(fields[field]) : readValue(fields[field]),
+  ]));
   return normalizeCampaign({
     ...settings,
     popup: path,
-    type,
-    name: cells[TITLE_ROW[type] || 0]?.textContent.trim(),
+    type: getPopupType(block),
+    name: fields.title?.textContent.trim(),
   }, order);
 }
 

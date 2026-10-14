@@ -13,7 +13,7 @@ export default async function decorate(block) {
   const formHref = fieldLink(form);
   const action = formHref ? await buildForm(formHref) : buildCta(ctaLabel, ctaLink);
   if (formHref) block.classList.add('popup-engajamento-form');
-  renderPopup(block, {
+  await renderPopup(block, {
     parts: [buildTitle(title), buildText(text), action],
   });
 }

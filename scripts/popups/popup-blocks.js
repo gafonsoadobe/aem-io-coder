@@ -1,7 +1,7 @@
 /**
  * Shared decoration for the popup blocks (popup-promocional, popup-informativo,
- * popup-engajamento). Each block row holds one authored field: first the content
- * fields, then the display settings (see scripts/popups/popup-config.js).
+ * popup-engajamento). Each block is a key-value table with the content fields
+ * and the display settings (see scripts/popups/popup-config.js).
  * Inside the dialog opened by the Popup Manager the block renders the popup card;
  * on its own page (/popups/...) it renders a visual simulation of the popup over
  * a dimmed page, with a desktop/mobile switch and a summary of the settings.
@@ -10,16 +10,19 @@ import {
   buildBlock, createOptimizedPicture, decorateBlock, loadBlock, loadCSS,
 } from '../aem.js';
 import { moveImageInstrumentation, moveInstrumentation } from '../scripts.js';
-import { CONTENT_ROWS, getFieldCells, parsePopupBlock } from './popup-config.js';
+import {
+  CONTENT_FIELDS, getFieldMap, getPopupType, parsePopupBlock,
+} from './popup-config.js';
 import {
   STATUS_LABELS, TYPE_LABELS, describeCooldown, describeFrequency, describePages,
   describePeriod, describeTrigger, editUrl, previewUrl,
 } from './popup-format.js';
 import { getStatus, normalizePath } from './popup-rules.js';
 
-/** The content fields (the settings rows that follow are read, not rendered). */
+/** The content field cells, in the order of CONTENT_FIELDS (settings are read, not rendered). */
 export function getFields(block) {
-  return getFieldCells(block).slice(0, CONTENT_ROWS);
+  const fields = getFieldMap(block);
+  return CONTENT_FIELDS[getPopupType(block)].map((name) => fields[name]);
 }
 
 export const fieldText = (cell) => cell?.textContent.trim() || '';
@@ -191,8 +194,9 @@ function buildActions(campaign) {
  * @param {Element} card decorated popup card
  * @param {object} campaign settings read from the block
  */
-function buildSimulation(block, card, campaign) {
-  loadCSS(`${window.hlx.codeBasePath}/styles/popups.css`);
+async function buildSimulation(block, card, campaign) {
+  // styles first, so the simulation doesn't shift the page while it renders
+  await loadCSS(`${window.hlx.codeBasePath}/styles/popups.css`);
   const type = TYPE_LABELS[campaign.type] || 'Popup';
 
   const simulation = document.createElement('div');
@@ -235,11 +239,12 @@ function buildSimulation(block, card, campaign) {
  * decorated off-document, as fragments).
  * @param {Element} block popup block
  * @param {{media?: Element, parts: (Element|null)[]}} content
+ * @returns {Promise<void>}
  */
-export function renderPopup(block, content) {
+export async function renderPopup(block, content) {
   const onPage = block.isConnected;
   const campaign = onPage ? parsePopupBlock(block, normalizePath(window.location.pathname)) : null;
   const card = buildCard(content);
-  if (onPage) buildSimulation(block, card, campaign);
+  if (onPage) await buildSimulation(block, card, campaign);
   else block.replaceChildren(card);
 }

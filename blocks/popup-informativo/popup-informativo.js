@@ -19,7 +19,7 @@ function getLevel(value) {
  * Rows: title | message | level (info, aviso, critico) | CTA label | CTA link.
  * @param {Element} block The block element
  */
-export default function decorate(block) {
+export default async function decorate(block) {
   const [title, message, level, ctaLabel, ctaLink] = getFields(block);
   const key = getLevel(fieldText(level));
   block.dataset.level = key;
@@ -30,7 +30,7 @@ export default function decorate(block) {
   badge.innerHTML = '<span class="popup-level-icon" aria-hidden="true"></span>';
   badge.append(LEVELS[key]);
 
-  renderPopup(block, {
+  await renderPopup(block, {
     parts: [badge, buildTitle(title), buildText(message), buildCta(ctaLabel, ctaLink)],
   });
 }
