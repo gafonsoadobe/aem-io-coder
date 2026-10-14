@@ -1,0 +1,36 @@
+{
+  "definitions": [
+    {
+      "title": "Formulário",
+      "id": "form",
+      "model": "form",
+      "plugins": {
+        "da": {
+          "name": "form",
+          "unsafeHTML": "<div class=\"form\"><div><div><a href=\"/forms/abra-sua-conta.json\">/forms/abra-sua-conta.json</a></div></div></div>",
+          "fields": [
+            {
+              "name": "formUrl",
+              "selector": "div>div>a[href]"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "form",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "formUrl",
+          "label": "Formulário: endereço do formulário publicado no AEM Forms (ex.: https://main--agibank-forms--gafonsoadobe.aem.live/content/forms/af/contato) ou planilha do Document Authoring (ex.: /forms/abra-sua-conta.json)",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

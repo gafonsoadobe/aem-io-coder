@@ -51,7 +51,7 @@
           "component": "aem-content",
           "valueType": "string",
           "name": "form",
-          "label": "Formulário (opcional, substitui o botão): ex. /forms/abra-sua-conta.json"
+          "label": "Formulário (opcional, substitui o botão): formulário publicado no AEM Forms ou planilha, ex. /forms/abra-sua-conta.json"
         },
         {
           "component": "tab",
