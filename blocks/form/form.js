@@ -586,15 +586,44 @@ function fromHeadlessForm(data, url) {
 }
 
 /**
- * A form path on an AEM Forms instance (https://publish-.../content/forms/af/contato)
- * is loaded through the headless API (/adobe/forms/af/{base64 path}).
+ * Forms on an AEM Forms instance are loaded from publish, through the headless
+ * API (/adobe/forms/af/{base64 form path}). Accepts the addresses authors copy
+ * from AEM: the published form (https://publish-.../content/forms/af/contato),
+ * the author host (author-... is mapped to publish-...), the Forms & Documents
+ * path (/content/dam/formsanddocuments/contato) and AEM console or editor pages.
  * @param {string} href authored form address
  */
-function toHeadlessFormUrl(href) {
+export function toHeadlessFormUrl(href) {
   const url = new URL(href, window.location.href);
-  if (url.origin === window.location.origin || !url.pathname.startsWith('/content/forms/af/')) return href;
-  const path = url.pathname.replace(/\.html$/, '');
-  return `${url.origin}/adobe/forms/af/${btoa(path)}`;
+  if (url.origin === window.location.origin || !url.hostname.endsWith('.adobeaemcloud.com')) return href;
+  // the form path may follow an AEM console or editor page
+  // (/ui#/aem/aem/formdetails.html/content/dam/..., /editor.html/content/forms/af/...)
+  const address = `${url.pathname}${url.hash}`;
+  const start = address.indexOf('/content/');
+  if (start === -1) return href;
+  const path = address.slice(start)
+    .replace(/\/jcr:content.*$/, '')
+    .replace(/\.html$/, '')
+    .replace(/^\/content\/dam\/formsanddocuments\//, '/content/forms/af/');
+  if (!path.startsWith('/content/forms/af/')) return href;
+  const host = url.hostname.replace(/^author-/, 'publish-');
+  return `https://${host}/adobe/forms/af/${btoa(path)}`;
+}
+
+/**
+ * Tells authors why a form is missing (in the editor and on preview only;
+ * visitors of the live site just don't see the form).
+ */
+function showFormNotice(block, container, formUrl) {
+  const { hostname } = window.location;
+  if (!/(\.ue\.da\.live|\.aem\.page|localhost)$/.test(hostname)) return;
+  const notice = document.createElement('p');
+  notice.className = 'form-notice';
+  notice.textContent = formUrl.includes('/adobe/forms/af/')
+    ? 'Não foi possível carregar o formulário do AEM Forms. Confira se ele está publicado e se este site está liberado na política de CORS do AEM publish.'
+    : 'Não foi possível carregar o formulário. Confira o endereço no campo "Formulário".';
+  container.replaceWith(notice);
+  block.classList.add('form-unavailable');
 }
 
 export default async function decorate(block) {
@@ -604,7 +633,13 @@ export default async function decorate(block) {
   if (container) {
     ({ pathname } = new URL(container.href));
     const formUrl = toHeadlessFormUrl(container.href);
-    formDef = fromHeadlessForm(await fetchForm(formUrl), formUrl);
+    try {
+      formDef = fromHeadlessForm(await fetchForm(formUrl), formUrl);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.warn('Form could not be loaded', formUrl, error);
+    }
+    if (!formDef) showFormNotice(block, container, formUrl);
   } else {
     ({ container, formDef } = extractFormDefinition(block));
   }

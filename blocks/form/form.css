@@ -732,3 +732,11 @@ main .form form select[multiple] {
   --form-input-border-color: var(--agi-green-200);
   --form-input-background-color: transparent;
 }
+
+main .form .form-notice {
+  border: 1px dashed var(--agi-red, #ef0000);
+  border-radius: 8px;
+  padding: 16px;
+  color: #a30000;
+  font-size: 16px;
+}
