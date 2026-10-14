@@ -271,6 +271,23 @@
           }
         },
         {
+          "title": "Formulário",
+          "id": "form",
+          "model": "form",
+          "plugins": {
+            "da": {
+              "name": "form",
+              "unsafeHTML": "<div class=\"form\"><div><div><a href=\"/forms/abra-sua-conta.json\">/forms/abra-sua-conta.json</a></div></div></div>",
+              "fields": [
+                {
+                  "name": "formUrl",
+                  "selector": "div>div>a[href]"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Popup Engajamento",
           "id": "popup-engajamento",
           "model": "popup-engajamento",

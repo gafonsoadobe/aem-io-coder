@@ -195,6 +195,18 @@
     ]
   },
   {
+    "id": "form",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formUrl",
+        "label": "Formulário: endereço do formulário publicado no AEM Forms (ex.: https://main--agibank-forms--gafonsoadobe.aem.live/content/forms/af/contato) ou planilha do Document Authoring (ex.: /forms/abra-sua-conta.json)",
+        "required": true
+      }
+    ]
+  },
+  {
     "id": "popup-engajamento",
     "fields": [
       {
@@ -232,7 +244,7 @@
         "component": "aem-content",
         "valueType": "string",
         "name": "form",
-        "label": "Formulário (opcional, substitui o botão): ex. /forms/abra-sua-conta.json"
+        "label": "Formulário (opcional, substitui o botão): formulário publicado no AEM Forms ou planilha, ex. /forms/abra-sua-conta.json"
       },
       {
         "component": "tab",
