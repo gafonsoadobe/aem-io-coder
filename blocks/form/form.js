@@ -570,13 +570,41 @@ export async function renderForm(formDef, element) {
   return { form, afbForm };
 }
 
+/**
+ * Forms published by AEM Forms through the headless API (/adobe/forms/af/{id})
+ * come wrapped in afModelDefinition, with endpoints relative to the AEM host:
+ * unwrap the definition and resolve its submit action against that host.
+ * @param {object} data fetched form definition
+ * @param {string} url address the definition was fetched from
+ */
+function fromHeadlessForm(data, url) {
+  const def = data?.afModelDefinition;
+  if (!def) return data;
+  const { origin } = new URL(url, window.location.href);
+  if (typeof def.action === 'string' && def.action.startsWith('/')) def.action = `${origin}${def.action}`;
+  return def;
+}
+
+/**
+ * A form path on an AEM Forms instance (https://publish-.../content/forms/af/contato)
+ * is loaded through the headless API (/adobe/forms/af/{base64 path}).
+ * @param {string} href authored form address
+ */
+function toHeadlessFormUrl(href) {
+  const url = new URL(href, window.location.href);
+  if (url.origin === window.location.origin || !url.pathname.startsWith('/content/forms/af/')) return href;
+  const path = url.pathname.replace(/\.html$/, '');
+  return `${url.origin}/adobe/forms/af/${btoa(path)}`;
+}
+
 export default async function decorate(block) {
   let container = block.querySelector('a[href]');
   let formDef;
   let pathname;
   if (container) {
     ({ pathname } = new URL(container.href));
-    formDef = await fetchForm(container.href);
+    const formUrl = toHeadlessFormUrl(container.href);
+    formDef = fromHeadlessForm(await fetchForm(formUrl), formUrl);
   } else {
     ({ container, formDef } = extractFormDefinition(block));
   }
