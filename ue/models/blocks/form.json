@@ -26,7 +26,7 @@
           "component": "text",
           "valueType": "string",
           "name": "formUrl",
-          "label": "Formulário: endereço do formulário publicado no AEM Forms (ex.: https://main--agibank-forms--gafonsoadobe.aem.live/content/forms/af/contato) ou planilha do Document Authoring (ex.: /forms/abra-sua-conta.json)",
+          "label": "Formulário: caminho do formulário no AEM Forms (ex.: https://publish-p80952-e699446.adobeaemcloud.com/content/forms/af/contato) ou planilha do Document Authoring (ex.: /forms/abra-sua-conta.json)",
           "required": true
         }
       ]
